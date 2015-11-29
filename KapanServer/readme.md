@@ -1,21 +1,26 @@
-## Lumen PHP Framework
+## KapanServer
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+KapanServer adalah backend dari project Kawal pembangunan Hackataon 3.0. Dibangun dengan arsitektur REST Webservice.
 
-## Official Documentation
+## Tools
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+- Lumen Framework
+- MySQL
+- JWT Token
+- OAuth2 (Facebook & Google+, etc??) - Laravel Socialite
+- PHPUnit (Liat waktu)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Persiapan
 
-### License
+1. Install library with composer -> "composer install"
+2. Setup Database connection -> rubah .env, DB_DATABASE, DB_USERNAME, DB_PASSWORD
+3. Migrate Database -> "php artisan migrate"
+4. Seed Database -> "php artisan db:seed"
+5. Test request via Postman -> setting Header: Content-Type = application/json
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+### Reference
+
+- [Lumen OAuth2](https://github.com/barryvdh/barryvdh.github.io/blob/master/_posts/2015-07-19-oauth-in-javascript-apps-with-angular-lumen-using-satellizer-laravel-socialite.md)
