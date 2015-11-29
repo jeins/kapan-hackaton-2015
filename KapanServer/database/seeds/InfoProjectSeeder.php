@@ -13,7 +13,7 @@ class InfoProjectSeeder extends Seeder
     {
         $projects = [
             [
-                'id_pemerintah'     => '1',
+                'pemerintah_profile_id'     => '1',
                 'nama'              => 'Pembangunan Tangga Berjalan',
                 'jenis'             => 'negara',
                 'deskripsi'         => 'project ini adalah .....',
@@ -25,7 +25,7 @@ class InfoProjectSeeder extends Seeder
                 'jadwal_realisasi'  => '0000-00-00 00:00:00'
             ],
             [
-                'id_pemerintah'     => '2',
+                'pemerintah_profile_id'     => '2',
                 'nama'              => 'Pembangunan Kereta Kencana',
                 'jenis'             => 'negara',
                 'deskripsi'         => 'project ini adalah .....',

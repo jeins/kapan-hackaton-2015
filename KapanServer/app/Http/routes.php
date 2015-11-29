@@ -26,4 +26,6 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', '
 
     $app->get('project/{id}', 'InfoProjectController@getProjectById');
 
+    $app->get('project/pemerintah/{id}', 'InfoProjectController@getProjectByPemerintah');
+
 });

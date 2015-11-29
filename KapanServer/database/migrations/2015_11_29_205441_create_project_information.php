@@ -14,8 +14,8 @@ class CreateProjectInformation extends Migration
     {
         Schema::create('info_projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_pemerintah')->unsigned();
-            $table->foreign('id_pemerintah')->references('id')->on('pemerintah_profiles')->onDelete('cascade');
+            $table->integer('pemerintah_profile_id')->unsigned();
+            $table->foreign('pemerintah_profile_id')->references('id')->on('pemerintah_profiles')->onDelete('cascade');
             $table->string('nama');
             $table->string('jenis'); // pemerintah / daerah
             $table->string('deskripsi');
