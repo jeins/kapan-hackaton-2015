@@ -13,7 +13,7 @@ class Authenticate
     protected $auth;
     private $token_secret = 'TOKENSECRETKEY!!!';
 
-    public function __construct($auth)
+    public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }

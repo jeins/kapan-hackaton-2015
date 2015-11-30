@@ -7,6 +7,7 @@ use JWT;
 use GuzzleHttp;
 use Illuminate\Http\Request;
 use App\Models\ProfileRakyat;
+use Symfony\Component\HttpFoundation\File;
 
 class AuthController extends Controller
 {
@@ -64,14 +65,14 @@ class AuthController extends Controller
             $rakyat->fullname = $profile['name'];
             $rakyat->save();
 
-            return response()->json(['token' => $this->createToken($rakyat)]);
+            return response()->json(['token' => $this->generateToken($rakyat)]);
         } else
         {
             $rakyat = ProfileRakyat::where('google_token', '=', $profile['sub']);
 
             if ($rakyat->first())
             {
-                return response()->json(['token' => $this->createToken($rakyat->first())]);
+                return response()->json(['token' => $this->generateToken($rakyat->first())]);
             }
 
             $rakyat = new ProfileRakyat;
@@ -79,7 +80,7 @@ class AuthController extends Controller
             $rakyat->fullname = $profile['name'];
             $rakyat->save();
 
-            return response()->json(['token' => $this->createToken($rakyat)]);
+            return response()->json(['token' => $this->generateToken($rakyat)]);
         }
     }
 }

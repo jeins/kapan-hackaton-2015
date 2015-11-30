@@ -17,11 +17,11 @@ $app->get('/', function () use ($app) {
 
 
 ########### Auth
-$app->post('auth/google', 'App\Http\Controllers\AuthController@googleOAuth');
-$app->get('api/me', ['middleware' => 'auth', 'uses' => 'App\Http\Controllers\ProfileRakyatController@getRakyat']);
-$app->put('api/me', ['middleware' => 'auth', 'uses' => 'App\Http\Controllers\ProfileRakyatController@updateRakyat']);
+$app->post('auth/google', 'AuthController@googleOAuth');
+$app->get('api/me', ['middleware' => 'auth', 'uses' => 'ProfileRakyatController@getRakyat']); //TESTER
+$app->put('api/me', ['middleware' => 'auth', 'uses' => 'ProfileRakyatController@updateRakyat']); //TESTER
 
-$app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'mediatype'], function($app){
+$app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'auth'], function($app){
     ############ Profile
     $app->get('profile/{id}', 'ProfileController@getProfile');
 

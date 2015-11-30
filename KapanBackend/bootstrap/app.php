@@ -63,11 +63,11 @@ $app->middleware([
     Illuminate\Session\Middleware\StartSession::class,
     Illuminate\View\Middleware\ShareErrorsFromSession::class,
     Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
+    App\Http\Middleware\MediatypeMiddleware::class
 ]);
 
 $app->routeMiddleware([
-    'mediatype'     => 'App\Http\Middleware\MediatypeMiddleware',
-    'auth'          => 'App\Http\Middleware\Authenticate'
+    'auth' => 'App\Http\Middleware\Authenticate'
 ]);
 
 /*
