@@ -24,3 +24,4 @@ KapanServer adalah backend dari project Kawal pembangunan Hackataon 3.0. Dibangu
 ### Reference
 
 - [Lumen OAuth2](https://github.com/barryvdh/barryvdh.github.io/blob/master/_posts/2015-07-19-oauth-in-javascript-apps-with-angular-lumen-using-satellizer-laravel-socialite.md)
+- Google OAuth, Client ID: 735966287704-d97heeq4ouke1oj0ohi38cjc3i0hijh5.apps.googleusercontent.com - Client Secret: 4e0pgAua3fsifLKvy-r30KsK
