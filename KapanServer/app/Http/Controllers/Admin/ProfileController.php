@@ -35,4 +35,23 @@ class ProfileController extends Controller
 
         return response()->json($profile);
     }
+
+    /**
+     * update selected profile
+     * @request PUT
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function updateProfile(Request $request, $id){
+        $profilePemerintah = PemerintahProfile::find($id);
+
+        $profilePemerintah->email = $request->input('email');
+        $profilePemerintah->password = $request->input('password'); // TODO: ADD HASH before save to DB
+        $profilePemerintah->fullname = $request->input('fullname');
+
+        $profilePemerintah->save();
+
+        return response()->json($profilePemerintah);
+    }
 }

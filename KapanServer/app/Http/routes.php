@@ -21,11 +21,17 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', '
 
     $app->post('profile', 'ProfileController@addNewProfiles');
 
+    $app->put('profile/{id}', 'ProfileController@updateProfile');
+
     ############ Project
     $app->get('projects', 'InfoProjectController@getAllProject');
 
     $app->get('project/{id}', 'InfoProjectController@getProjectById');
 
     $app->get('project/pemerintah/{id}', 'InfoProjectController@getProjectByPemerintah');
+
+    $app->post('project', 'InfoProjectController@addNewProject');
+
+    $app->put('project/{id}', 'InfoProjectController@updateProject');
 
 });
