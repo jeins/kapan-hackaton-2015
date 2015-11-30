@@ -14,7 +14,10 @@ class CreateRakyatProfile extends Migration
     {
         Schema::create('profile_rakyat', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('token');
+            $table->string('email');
+            $table->string('password');
+            $table->string('facebook_token');
+            $table->string('google_token');
             $table->string('fullname');
             $table->timestamps();
         });

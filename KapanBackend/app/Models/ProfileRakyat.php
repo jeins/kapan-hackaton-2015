@@ -9,5 +9,6 @@ class ProfileRakyat extends Model
 {
 	protected $table = 'profile_rakyat';
 	protected $primaryKey = 'id';
-    protected $fillable = ['token', 'fullname'];
+	protected $hidden = ['password'];
+    protected $fillable = ['email', 'facebook_token', 'google_token', 'fullname'];
 }
