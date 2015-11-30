@@ -63,7 +63,7 @@ $app->middleware([
     Illuminate\Session\Middleware\StartSession::class,
     Illuminate\View\Middleware\ShareErrorsFromSession::class,
     Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
-    App\Http\Middleware\MediatypeMiddleware::class
+    //App\Http\Middleware\MediatypeMiddleware::class
 ]);
 
 $app->routeMiddleware([
