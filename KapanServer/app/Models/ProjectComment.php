@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectComment extends Model
 {
 
-    protected $fillable = ['id_project', 'id_rakyat', 'comment', 'like_dislike_project', 'like_comment', 'dislike_comment'];
+    protected $fillable = ['info_project_id', 'rakyat_profile_id', 'comment', 'like_dislike_project', 'like_comment', 'dislike_comment'];
 }

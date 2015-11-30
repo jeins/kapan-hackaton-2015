@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectProgress extends Model
 {
-    protected $fillable = ['id_project', 'description', 'tanggal_update'];
+    protected $fillable = ['info_project_id', 'description', 'tanggal_update'];
 }
