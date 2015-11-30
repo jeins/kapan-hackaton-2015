@@ -23,7 +23,16 @@ angular.module('App')
         $scope.getProfile = function() {
             Account.getProfile()
                 .success(function(data) {
-                    $scope.user = data;console.log(data);
+                    $scope.user = data;
+                })
+                .error(function(error) {
+                    console.log(error);
+                });
+
+            Account.getProjects()
+                .success(function(data) {
+                    console.log("Projects");
+                    console.log(data);
                 })
                 .error(function(error) {
                     console.log(error);

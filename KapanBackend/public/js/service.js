@@ -4,8 +4,8 @@ angular.module('App')
             getProfile: function() {
                 return $http.get('/api/me');
             },
-            updateProfile: function(profileData) {
-                return $http.put('/api/me', profileData);
+            getProjects: function() {
+                return $http.get('admin/projects');
             }
         };
     });
