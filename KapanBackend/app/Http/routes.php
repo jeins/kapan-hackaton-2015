@@ -15,6 +15,12 @@ $app->get('/', function () use ($app) {
     return $app->welcome();
 });
 
+
+########### Auth
+$app->post('auth/google', 'App\Http\Controllers\AuthController@googleOAuth');
+$app->get('api/me', ['middleware' => 'auth', 'uses' => 'App\Http\Controllers\ProfileRakyatController@getRakyat']);
+$app->put('api/me', ['middleware' => 'auth', 'uses' => 'App\Http\Controllers\ProfileRakyatController@updateRakyat']);
+
 $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'mediatype'], function($app){
     ############ Profile
     $app->get('profile/{id}', 'ProfileController@getProfile');
