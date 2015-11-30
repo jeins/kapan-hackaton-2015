@@ -13,7 +13,7 @@ class InfoProjectSeeder extends Seeder
     {
         $projects = [
             [
-                'pemerintah_profile_id'     => '1',
+                'profile_pemerintah_id'     => '1',
                 'nama'              => 'Pembangunan Tangga Berjalan',
                 'jenis'             => 'negara',
                 'deskripsi'         => 'project ini adalah .....',
@@ -25,7 +25,7 @@ class InfoProjectSeeder extends Seeder
                 'jadwal_realisasi'  => '0000-00-00 00:00:00'
             ],
             [
-                'pemerintah_profile_id'     => '2',
+                'profile_pemerintah_id'     => '2',
                 'nama'              => 'Pembangunan Kereta Kencana',
                 'jenis'             => 'negara',
                 'deskripsi'         => 'project ini adalah .....',
@@ -38,6 +38,6 @@ class InfoProjectSeeder extends Seeder
             ]
         ];
 
-        DB::table('info_projects')->insert($projects);
+        DB::table('project_info')->insert($projects);
     }
 }

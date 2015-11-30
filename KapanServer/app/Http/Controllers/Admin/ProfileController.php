@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\PemerintahProfile;
+use App\Models\ProfilePemerintah;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class ProfileController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getProfile($id){
-        $profile = PemerintahProfile::find($id);
+        $profile = ProfilePemerintah::find($id);
 
         return response()->json($profile);
     }
@@ -25,13 +25,13 @@ class ProfileController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function addNewProfiles(Request $request){
-        $emailExist = PemerintahProfile::where('email', '=', $request->input('email'))->count();
+        $emailExist = ProfilePemerintah::where('email', '=', $request->input('email'))->count();
 
         if($emailExist > 0){
             return response()->json(['error' => true, 'errmsg'=>'email exist'], 208);
         }
 
-        $profile = PemerintahProfile::create($request->all());
+        $profile = ProfilePemerintah::create($request->all());
 
         return response()->json($profile);
     }
@@ -44,7 +44,7 @@ class ProfileController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function updateProfile(Request $request, $id){
-        $profilePemerintah = PemerintahProfile::find($id);
+        $profilePemerintah = ProfilePemerintah::find($id);
 
         $profilePemerintah->email = $request->input('email');
         $profilePemerintah->password = $request->input('password'); // TODO: ADD HASH before save to DB

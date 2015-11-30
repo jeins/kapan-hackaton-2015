@@ -14,10 +14,10 @@ class CreateProjectComments extends Migration
     {
         Schema::create('project_comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('info_project_id')->unsigned();
-            $table->foreign('info_project_id')->references('id')->on('info_projects')->onDelete('cascade');
-            $table->integer('rakyat_profile_id')->unsigned();
-            $table->foreign('rakyat_profile_id')->references('id')->on('rakyat_profiles')->onDelete('cascade');
+            $table->integer('project_info_id')->unsigned();
+            $table->foreign('project_info_id')->references('id')->on('project_info')->onDelete('cascade');
+            $table->integer('profile_rakyat_id')->unsigned();
+            $table->foreign('profile_rakyat_id')->references('id')->on('profile_rakyat')->onDelete('cascade');
             $table->string('comment');
             $table->integer('like_dislike_project'); // like=1 | dislike=-1
             $table->integer('like_comment');

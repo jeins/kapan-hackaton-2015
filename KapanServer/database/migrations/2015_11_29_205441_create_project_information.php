@@ -12,10 +12,10 @@ class CreateProjectInformation extends Migration
      */
     public function up()
     {
-        Schema::create('info_projects', function (Blueprint $table) {
+        Schema::create('project_info', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pemerintah_profile_id')->unsigned();
-            $table->foreign('pemerintah_profile_id')->references('id')->on('pemerintah_profiles')->onDelete('cascade');
+            $table->integer('profile_pemerintah_id')->unsigned();
+            $table->foreign('profile_pemerintah_id')->references('id')->on('profile_pemerintah')->onDelete('cascade');
             $table->string('nama');
             $table->string('jenis'); // pemerintah / daerah
             $table->string('deskripsi');
@@ -36,6 +36,6 @@ class CreateProjectInformation extends Migration
      */
     public function down()
     {
-        Schema::drop('info_projects');
+        Schema::drop('project_info');
     }
 }

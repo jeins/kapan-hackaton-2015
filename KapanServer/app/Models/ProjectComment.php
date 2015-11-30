@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectComment extends Model
 {
-
-    protected $fillable = ['info_project_id', 'rakyat_profile_id', 'comment', 'like_dislike_project', 'like_comment', 'dislike_comment'];
+	protected $table = 'project_comment';
+    protected $fillable = ['project_info_id', 'rakyat_profile_id', 'comment', 'like_dislike_project', 'like_comment', 'dislike_comment'];
 }

@@ -12,7 +12,7 @@ class CreateRakyatProfile extends Migration
      */
     public function up()
     {
-        Schema::create('rakyat_profiles', function (Blueprint $table) {
+        Schema::create('profile_rakyat', function (Blueprint $table) {
             $table->increments('id');
             $table->string('token');
             $table->string('fullname');
@@ -27,6 +27,6 @@ class CreateRakyatProfile extends Migration
      */
     public function down()
     {
-        Schema::drop('rakyat_profile');
+        Schema::drop('profile_rakyat');
     }
 }

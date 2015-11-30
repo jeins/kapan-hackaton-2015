@@ -11,7 +11,7 @@ class PemerintahProfileSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pemerintah_profiles')->insert(
+        DB::table('profile_pemerintah')->insert(
             [
                 'email'     => 'test@test.com',
                 'password'  => 'testpassword',

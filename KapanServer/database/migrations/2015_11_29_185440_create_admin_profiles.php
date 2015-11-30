@@ -12,7 +12,7 @@ class CreateAdminProfiles extends Migration
      */
     public function up()
     {
-        Schema::create('pemerintah_profiles', function (Blueprint $table) {
+        Schema::create('profile_pemerintah', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
             $table->string('password');
@@ -28,6 +28,6 @@ class CreateAdminProfiles extends Migration
      */
     public function down()
     {
-        Schema::drop('pemerintah_profiles');
+        Schema::drop('profile_pemerintah');
     }
 }

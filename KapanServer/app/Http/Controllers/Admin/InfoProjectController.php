@@ -3,8 +3,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\InfoProject;
-use App\Models\PemerintahProfile;
+use App\Models\ProjectInfo;
+use App\Models\ProfilePemerintah;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class InfoProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getAllProject(){
-        $projects = InfoProject::all();
+        $projects = ProjectInfo::all();
 
         return response()->json($projects);
     }
@@ -29,7 +29,7 @@ class InfoProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getProjectById($id){
-        $project = InfoProject::find($id);
+        $project = ProjectInfo::find($id);
 
         return response()->json($project);
     }
@@ -41,7 +41,7 @@ class InfoProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getProjectByPemerintah($id){
-        $pemerintah = PemerintahProfile::find($id);
+        $pemerintah = ProfilePemerintah::find($id);
 
         $projects = $pemerintah->projects;
 
@@ -55,10 +55,10 @@ class InfoProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function addNewProject(Request $request){
-        $getPemerintahId = $request->input('pemerintah_profile_id');
+        $getPemerintahId = $request->input('profile_pemerintah_id');
 
-        if(PemerintahProfile::where('id', '=', $getPemerintahId)->count() > 0){
-            $saveProject = InfoProject::create($request->all());
+        if(ProfilePemerintah::where('id', '=', $getPemerintahId)->count() > 0){
+            $saveProject = ProjectInfo::create($request->all());
 
             return response()->json($saveProject);
         }
@@ -74,9 +74,9 @@ class InfoProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function updateProject(Request $request, $id){
-        $project = InfoProject::find($id);
+        $project = ProjectInfo::find($id);
 
-        if($request->input('pemerintah_profile_id') == $project->pemerintah_profile_id){
+        if($request->input('profile_pemerintah_id') == $project->profile_pemerintah_id){
             $project->nama = $request->input('nama');
             $project->jenis = $request->input('jenis');
             $project->deskripsi = $request->input('deskripsi');
