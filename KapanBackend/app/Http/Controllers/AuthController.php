@@ -15,6 +15,7 @@ class AuthController extends Controller
 {
     private $token_secret = 'TOKENSECRETKEY!!!';
     private $googleSecret = '4e0pgAua3fsifLKvy-r30KsK';
+    private $facebookSecret = '';
 
     /**
      * generate token
@@ -138,6 +139,60 @@ class AuthController extends Controller
 
             $rakyat = new ProfileRakyat;
             $rakyat->google_token = $profile['sub'];
+            $rakyat->fullname = $profile['name'];
+            $rakyat->save();
+
+            return response()->json(['token' => $this->generateToken($rakyat)]);
+        }
+    }
+
+    public function facebookOAuth(Request $request){
+        $accessTokenUrl = 'https://graph.facebook.com/v2.3/oauth/access_token';
+        $graphApiUrl = 'https://graph.facebook.com/v2.3/me';
+
+        $params = [
+            'code' => $request->input('code'),
+            'client_id' => $request->input('clientId'),
+            'redirect_uri' => $request->input('redirectUri'),
+            'client_secret' => $this->facebookSecret
+        ];
+
+        $client = new GuzzleHttp\Client();
+
+        $accessToken = $client->get($accessTokenUrl, ['query' => $params])->json();
+
+        $profile = $client->get($graphApiUrl, ['query' => $accessToken])->json();
+
+
+        if ($request->header('Authorization'))
+        {
+            $rakyat = ProfileRakyat::where('facebook', '=', $profile['id']);
+
+            if ($rakyat->first())
+            {
+                return response()->json(['message' => 'There is already a Facebook account that belongs to you'], 409);
+            }
+
+            $token = explode(' ', $request->header('Authorization'))[1];
+            $payload = (array) JWT::decode($token, $this->token_secret, array('HS256'));
+
+            $rakyat = ProfileRakyat::find($payload['sub']);
+            $rakyat->facebook_token = $profile['id'];
+            $rakyat->fullname = $profile['name'];
+            $rakyat->save();
+
+            return response()->json(['token' => $this->generateToken($rakyat)]);
+        } else
+        {
+            $rakyat = ProfileRakyat::where('facebook', '=', $profile['id']);
+
+            if ($rakyat->first())
+            {
+                return response()->json(['token' => $this->generateToken($rakyat->first())]);
+            }
+
+            $rakyat = new ProfileRakyat;
+            $rakyat->facebook_token = $profile['id'];
             $rakyat->fullname = $profile['name'];
             $rakyat->save();
 
