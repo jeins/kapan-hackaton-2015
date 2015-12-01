@@ -15,7 +15,7 @@ class PemerintahProfileSeeder extends Seeder
             [
                 'email'     => 'test@test.com',
                 'password'  => 'testpassword',
-                'fullname'  => 'test123'
+                'fullname'  => 'test123',
             ]
         );
     }

@@ -19,6 +19,7 @@ class CreateRakyatProfile extends Migration
             $table->string('facebook_token')->nullable();
             $table->string('google_token')->nullable();
             $table->string('fullname')->nullable();
+            $table->string('status_auth'); //rakyat
             $table->timestamps();
         });
     }

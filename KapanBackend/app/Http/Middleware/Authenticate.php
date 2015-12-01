@@ -27,6 +27,7 @@ class Authenticate
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
+        $this->adminUri = ['admin/*'];
     }
 
     /**
@@ -41,6 +42,12 @@ class Authenticate
 
             if($payload['exp'] < time()){
                 return response()->json(['error' => true, 'errmsg' => 'Token has expired!']);
+            }
+
+            $page = explode('/', $request->path());
+            $regex = '#' . implode('|', $this->adminUri) . '#';
+            if(preg_match($regex, $request->path()) && $payload['status_auth'] != $page[0]){
+                return response()->json(['error'=>true, 'errmsg' => 'cannot access admin page!']);
             }
 
             $request['user'] = $payload;
