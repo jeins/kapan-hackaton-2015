@@ -24,6 +24,9 @@ KapanServer adalah backend dari project Kawal pembangunan Hackataon 3.0. Dibangu
 
 ## Service Request
 
+* #### Dokumentasi di Postman (tinggal import ke Postman aja)
+[Download KapanBackend - Postman](https://www.getpostman.com/collections/3bbaa3a712dce8a7e2d8)
+
 * #### Authenticate
 | HTTP | URL                 | Keterangan | Request                                                | Response        |
 | ---  |:------------------- | :----------| ------------------------------------------------------ | --------------- |
