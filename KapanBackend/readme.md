@@ -21,7 +21,29 @@ KapanServer adalah backend dari project Kawal pembangunan Hackataon 3.0. Dibangu
 4. Seed Database -> "php artisan db:seed"
 5. Test request via Postman -> setting Header: Content-Type = application/json
 
-### Reference
 
-- [Lumen OAuth2](https://github.com/barryvdh/barryvdh.github.io/blob/master/_posts/2015-07-19-oauth-in-javascript-apps-with-angular-lumen-using-satellizer-laravel-socialite.md)
-- Google OAuth, Client ID: 735966287704-d97heeq4ouke1oj0ohi38cjc3i0hijh5.apps.googleusercontent.com - Client Secret: 4e0pgAua3fsifLKvy-r30KsK
+## Service Request
+
+* #### Authenticate
+| HTTP | URL                 | Keterangan | Request                                                | Response        |
+| ---  |:------------------- | :----------| ------------------------------------------------------ | --------------- |
+| POST | /auth/rakyat/signup | rakyat signup |{"fullname": "xxx", "email": "xxx", "password": "xxx"} | {"token":"xxx"} |
+| POST | /auth/rakyat/login  | rakyat login |{"email": "xxx", "password": "xxx"}| {"token":"xxx"} |
+| POST | /auth/rakyat/google | rakyat login via google |OAuth2 | {"token":"xxx"} |
+
+* #### Admin
+| HTTP | URL      | Keterangan           | Request   | Response  |
+| ---: |:--------:| :------------------- | :-------- | :-------- |
+| POST | /admin/profile      | add new admin profile |{ "email": "budi@dpr-ri.com", "password": "mautauaja", "fullname": "Budi Setiawan" } | {request} |
+| PUT  | /admin/profile/{id} | update admin profile |{"fullname": "x", "email": "x", "password": "x"} | {request} |
+| POST | /admin/project      | add new project | {"profile_pemerintah_id":1,"nama":"Pembangunan Tangga Berjalan","jenis":"negara","deskripsi":"project ini adalah","outcome":"project ini adalah","lokasi":"{long:123, lat:456}","status_selesai":0,"biaya":"123.123.123.123","waktu_pelaksanaan":"0000-00-00 00:00:00","jadwal_realisasi":"0000-00-00 00:00:00"} | {request} |
+| PUT  | /admin/project/{id} | update project | {"profile_pemerintah_id":1,"nama":"Pembangunan Tangga Berdiri","jenis":"negara","deskripsi":"tangga berdiri adalah","outcome":"jalan tol","lokasi":"{long:123, lat:456}","status_selesai":0,"biaya":"123.123.123.123","waktu_pelaksanaan":"0000-00-00 00:00:00","jadwal_realisasi":"0000-00-00 00:00:00"} | {request} |
+
+* #### API
+| HTTP | URL      | Keterangan           | Request   | Response  |
+| ---: |:--------:| :------------------- | :-------- | :-------- |
+| GET | /api/profiles | display all profile pemerintah | - | [{"id":1,"email":"x","fullname":"x"}{"id":2,"email":"x","fullname":"x"}] |
+| GET | /api/profile/{id} | display profile pemerintah by id | - | {"id":1,"email":"x","fullname":"x"} |
+| GET | /api/projects | display all projects | - | [{"id":3,"profile_pemerintah_id":1,"nama":"Pembangunan Tangga Berjalan","jenis":"negara","deskripsi":"project ini adalah .....","outcome":"project ini adalah .....","lokasi":"{long:123, lat:456}","status_selesai":0,"biaya":"123.123.123.123","waktu_pelaksanaan":"0000-00-00 00:00:00","jadwal_realisasi":"0000-00-00 00:00:00","created_at":"-0001-11-30 00:00:00","updated_at":"-0001-11-30 00:00:00"},{"id":4,"profile_pemerintah_id":2,"nama":"Pembangunan Kereta Kencana","jenis":"negara","deskripsi":"project ini adalah .....","outcome":"project ini adalah .....","lokasi":"{long:123, lat:456}","status_selesai":0,"biaya":"1238.123.1512","waktu_pelaksanaan":"0000-00-00 00:00:00","jadwal_realisasi":"0000-00-00 00:00:00","created_at":"-0001-11-30 00:00:00","updated_at":"-0001-11-30 00:00:00"}] |
+| GET | /api/projects/{id} | display selected project | - | {"id":3,"profile_pemerintah_id":1,"nama":"Pembangunan Tangga Berjalan","jenis":"negara","deskripsi":"project ini adalah .....","outcome":"project ini adalah .....","lokasi":"{long:123, lat:456}","status_selesai":0,"biaya":"123.123.123.123","waktu_pelaksanaan":"0000-00-00 00:00:00","jadwal_realisasi":"0000-00-00 00:00:00","created_at":"-0001-11-30 00:00:00","updated_at":"-0001-11-30 00:00:00"} |
+| GET | /api/project/pemerintah/{id} | display project from specific pemerintah id | - | [{"id":3,"profile_pemerintah_id":1,"nama":"Pembangunan Tangga Berjalan","jenis":"negara","deskripsi":"project ini adalah .....","outcome":"project ini adalah .....","lokasi":"{long:123, lat:456}","status_selesai":0,"biaya":"123.123.123.123","waktu_pelaksanaan":"0000-00-00 00:00:00","jadwal_realisasi":"0000-00-00 00:00:00","created_at":"-0001-11-30 00:00:00","updated_at":"-0001-11-30 00:00:00"}] |

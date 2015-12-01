@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ProfilePemerintahController extends Controller
 {
+    public function getProfiles(){
+        $profiles = ProfilePemerintah::all();
+
+        return response()->json($profiles);
+    }
+
     /**
      * get selected profile by id
      * @param $id

@@ -8,7 +8,8 @@ class ProfilePemerintah extends Model
 {
 	protected $table = 'profile_pemerintah';
 	protected $primaryKey = 'id';
-    protected $fillable = ['email', 'password', 'fullname'];
+    protected $hidden = ['password'];
+    protected $fillable = ['email', 'fullname'];
 
     public function projects(){
         return $this->hasMany('App\Models\ProjectInfo');

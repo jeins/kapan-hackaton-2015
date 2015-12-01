@@ -23,7 +23,21 @@ $app->group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers'], functio
     $app->post('rakyat/google', 'AuthController@googleOAuth');
 });
 
+
+$app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
+    $app->post('profile', 'ProfilePemerintahController@addNewProfiles');
+
+    $app->put('profile/{id}', 'ProfilePemerintahController@updateProfile');
+
+    $app->post('project', 'ProjectInfoController@addNewProject');
+
+    $app->put('project/{id}', 'ProjectInfoController@updateProject');
+});
+
+
 $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
+    $app->get('profiles', 'ProfilePemerintahController@getProfiles');
+
     $app->get('profile/{id}', 'ProfilePemerintahController@getProfile');
 
     $app->get('projects', 'ProjectInfoController@getAllProject');
@@ -31,16 +45,4 @@ $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers', 'middlewa
     $app->get('project/{id}', 'ProjectInfoController@getProjectById');
 
     $app->get('project/pemerintah/{id}', 'ProjectInfoController@getProjectByPemerintah');
-});
-
-$app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
-    ############ Profile
-    $app->post('profile', 'ProfilePemerintahController@addNewProfiles');
-
-    $app->put('profile/{id}', 'ProfilePemerintahController@updateProfile');
-
-    ############ Project
-    $app->post('project', 'ProjectInfoController@addNewProject');
-
-    $app->put('project/{id}', 'ProjectInfoController@updateProject');
 });
