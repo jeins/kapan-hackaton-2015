@@ -14,11 +14,11 @@ class CreateRakyatProfile extends Migration
     {
         Schema::create('profile_rakyat', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
-            $table->string('password');
-            $table->string('facebook_token');
-            $table->string('google_token');
-            $table->string('fullname');
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
+            $table->string('facebook_token')->nullable();
+            $table->string('google_token')->nullable();
+            $table->string('fullname')->nullable();
             $table->timestamps();
         });
     }

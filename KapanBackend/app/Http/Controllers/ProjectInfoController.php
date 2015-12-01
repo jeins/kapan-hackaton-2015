@@ -1,14 +1,13 @@
 <?php
 
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Models\ProjectInfo;
 use App\Models\ProfilePemerintah;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InfoProjectController extends Controller
+class ProjectInfoController extends Controller
 {
 
     /**

@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 
 use JWT;
 use GuzzleHttp;
-use Illuminate\Http\Request;
 use App\Models\ProfileRakyat;
 use Symfony\Component\HttpFoundation\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     private $token_secret = 'TOKENSECRETKEY!!!';
     private $googleSecret = '4e0pgAua3fsifLKvy-r30KsK';
 
-    protected function generateToken($rakyat){
+    private function generateToken($rakyat){
         $payload = [
             'sub'   => $rakyat->id,
             'iat'   => time(),
@@ -22,6 +24,41 @@ class AuthController extends Controller
         ];
 
         return JWT::encode($payload, $this->token_secret);
+    }
+
+    public function loginRakyat(Request $request){
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $rakyat = ProfileRakyat::where('email', '=', $email)->first();
+
+        if($rakyat && Hash::check($password, $rakyat->password)){
+            unset($rakyat->password); //remove from memory
+
+            return response()->json(['token' => $this->generateToken($rakyat)]);
+        }
+
+        return response()->json(['error' => true, 'errmsg' => 'Wrong Email / Password'], 401);
+    }
+
+    public function signupRakyat(Request $request){
+        $validator = Validator::make($request->all(), [
+            'fullname'  => 'required',
+            'email'     => 'required|email|unique:profile_rakyat,email',
+            'password'  => 'required'
+        ]);
+
+        if($validator->fails()){
+           return response()->json(['error' => true, 'errmsg' => $validator->messages()], 400);
+        }
+
+        $rakyat = new ProfileRakyat();
+        $rakyat->fullname = $request->input('fullname');
+        $rakyat->email = $request->input('email');
+        $rakyat->password = Hash::make($request->input('password'));
+        $rakyat->save();
+
+        return response()->json(['token' => $this->generateToken($rakyat)]);
     }
 
     public function googleOAuth(Request $request)

@@ -15,27 +15,32 @@ $app->get('/', 'HomeController@index');
 
 
 ########### Auth
-$app->post('auth/google', 'AuthController@googleOAuth');
-$app->get('api/me', ['middleware' => 'auth', 'uses' => 'ProfileRakyatController@getRakyat']); //TESTER
-$app->put('api/me', ['middleware' => 'auth', 'uses' => 'ProfileRakyatController@updateRakyat']); //TESTER
+$app->group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers'], function($app){
+    $app->post('rakyat/signup', 'AuthController@signupRakyat');
 
-$app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'auth'], function($app){
+    $app->post('rakyat/login', 'AuthController@loginRakyat');
+
+    $app->post('rakyat/google', 'AuthController@googleOAuth');
+});
+
+$app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
+    $app->get('profile/{id}', 'ProfilePemerintahController@getProfile');
+
+    $app->get('projects', 'ProjectInfoController@getAllProject');
+
+    $app->get('project/{id}', 'ProjectInfoController@getProjectById');
+
+    $app->get('project/pemerintah/{id}', 'ProjectInfoController@getProjectByPemerintah');
+});
+
+$app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
     ############ Profile
-    $app->get('profile/{id}', 'ProfileController@getProfile');
+    $app->post('profile', 'ProfilePemerintahController@addNewProfiles');
 
-    $app->post('profile', 'ProfileController@addNewProfiles');
-
-    $app->put('profile/{id}', 'ProfileController@updateProfile');
+    $app->put('profile/{id}', 'ProfilePemerintahController@updateProfile');
 
     ############ Project
-    $app->get('projects', 'InfoProjectController@getAllProject');
+    $app->post('project', 'ProjectInfoController@addNewProject');
 
-    $app->get('project/{id}', 'InfoProjectController@getProjectById');
-
-    $app->get('project/pemerintah/{id}', 'InfoProjectController@getProjectByPemerintah');
-
-    $app->post('project', 'InfoProjectController@addNewProject');
-
-    $app->put('project/{id}', 'InfoProjectController@updateProject');
-
+    $app->put('project/{id}', 'ProjectInfoController@updateProject');
 });
