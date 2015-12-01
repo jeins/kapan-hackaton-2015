@@ -16,6 +16,12 @@ class AuthController extends Controller
     private $token_secret = 'TOKENSECRETKEY!!!';
     private $googleSecret = '4e0pgAua3fsifLKvy-r30KsK';
 
+    /**
+     * generate token
+     *
+     * @param $rakyat
+     * @return string
+     */
     private function generateToken($rakyat){
         $payload = [
             'sub'   => $rakyat->id,
@@ -26,6 +32,12 @@ class AuthController extends Controller
         return JWT::encode($payload, $this->token_secret);
     }
 
+    /**
+     * rakyat login with own Email & Password
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function loginRakyat(Request $request){
         $email = $request->input('email');
         $password = $request->input('password');
@@ -41,6 +53,12 @@ class AuthController extends Controller
         return response()->json(['error' => true, 'errmsg' => 'Wrong Email / Password'], 401);
     }
 
+    /**
+     * rakyat normal signup
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function signupRakyat(Request $request){
         $validator = Validator::make($request->all(), [
             'fullname'  => 'required',
@@ -61,6 +79,12 @@ class AuthController extends Controller
         return response()->json(['token' => $this->generateToken($rakyat)]);
     }
 
+    /**
+     * rakyat login with OAuth2
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function googleOAuth(Request $request)
     {
         $accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';

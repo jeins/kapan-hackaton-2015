@@ -5,7 +5,7 @@ angular.module('App')
                 return $http.get('/api/me');
             },
             getProjects: function() {
-                return $http.get('admin/projects');
+                return $http.get('/api/projects');
             }
         };
     });

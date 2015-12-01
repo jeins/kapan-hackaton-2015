@@ -10,14 +10,30 @@ use Illuminate\Contracts\Auth\Guard;
 class Authenticate
 {
 
+    /**
+     * @var Guard
+     */
     protected $auth;
+
+    /**
+     * @var string
+     */
     private $token_secret = 'TOKENSECRETKEY!!!';
 
+    /**
+     * Authenticate constructor.
+     * @param Guard $auth
+     */
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }
 
+    /**
+     * @param $request
+     * @param Closure $next
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function handle($request, Closure $next){
         if($request->header('Authorization')){
             $token = explode(' ', $request->header('Authorization'))[1];

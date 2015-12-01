@@ -12,7 +12,7 @@
 */
 
 $app->get('/', 'HomeController@index');
-
+$app->get('/api/me', ['middleware' => 'auth', 'uses' => 'ProfileRakyatController@getRakyat']);
 
 ########### Auth
 $app->group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers'], function($app){

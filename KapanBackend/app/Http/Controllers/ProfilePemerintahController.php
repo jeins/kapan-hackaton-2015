@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProfilePemerintahController extends Controller
 {
+    /**
+     * retrieve pemerinta projects
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getProfiles(){
         $profiles = ProfilePemerintah::all();
 
@@ -15,6 +20,7 @@ class ProfilePemerintahController extends Controller
 
     /**
      * get selected profile by id
+     *
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -26,6 +32,7 @@ class ProfilePemerintahController extends Controller
 
     /**
      * save new profile, email must be unique
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -43,6 +50,7 @@ class ProfilePemerintahController extends Controller
 
     /**
      * update selected profile
+     *
      * @request PUT
      * @param Request $request
      * @param $id

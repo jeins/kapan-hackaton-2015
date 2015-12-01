@@ -12,7 +12,7 @@ angular.module('App', ['ui.router', 'satellizer'])
         $authProvider.google({
             name: 'google',
             clientId: '735966287704-d97heeq4ouke1oj0ohi38cjc3i0hijh5.apps.googleusercontent.com',
-            url: '/auth/google',
+            url: '/auth/rakyat/google',
             redirectUri: 'http://kapan.127.0.0.1.xip.io/'
         });
     });

@@ -31,7 +31,7 @@ angular.module('App')
 
             Account.getProjects()
                 .success(function(data) {
-                    console.log("Projects");
+                    $scope.project = data;
                     console.log(data);
                 })
                 .error(function(error) {
