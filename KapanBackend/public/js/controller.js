@@ -38,5 +38,17 @@ angular.module('App')
                     console.log(error);
                 });
         };
+
         $scope.getProfile();
+
+        $scope.getProfile = function(id){
+          Account.getProfile(id)
+            .success(function(data) {
+                document.getElementById('profile_pemerintah').style.display='block';
+                $scope.pemerintah = data;
+            })
+            .error(function(error) {
+                console.log(error);
+            });
+        };
     });
