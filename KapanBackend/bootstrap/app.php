@@ -63,6 +63,7 @@ $app->middleware([
     Illuminate\Session\Middleware\StartSession::class,
     Illuminate\View\Middleware\ShareErrorsFromSession::class,
     App\Http\Middleware\VerifyCsrfToken::class,
+    Vluzrmos\LumenCors\CorsMiddleware
     //App\Http\Middleware\MediatypeMiddleware::class
 ]);
 
