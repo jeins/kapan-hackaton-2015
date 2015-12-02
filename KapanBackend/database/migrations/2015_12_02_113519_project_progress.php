@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateProgressProject extends Migration
+class ProjectProgress extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class UpdateProgressProject extends Migration
             $table->increments('id');
             $table->integer('project_info_id')->unsigned();
             $table->foreign('project_info_id')->references('id')->on('project_info')->onDelete('cascade');
-            $table->string('description');
+            $table->text('description');
             $table->timestamp('tanggal_update');
             $table->timestamps();
         });

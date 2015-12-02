@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectInformation extends Migration
+class ProjectInfo extends Migration
 {
     /**
      * Run the migrations.
@@ -17,14 +17,16 @@ class CreateProjectInformation extends Migration
             $table->integer('profile_pemerintah_id')->unsigned();
             $table->foreign('profile_pemerintah_id')->references('id')->on('profile_pemerintah')->onDelete('cascade');
             $table->string('nama');
-            $table->string('jenis'); // pemerintah / daerah
-            $table->string('deskripsi');
-            $table->string('outcome');
+            $table->enum('jenis', array('negara', 'daerah')); 
+            $table->text('deskripsi');
+            $table->text('outcome');
             $table->string('lokasi'); // latitude / longitude => save dalam json
             $table->boolean('status_selesai');
             $table->string('biaya');
             $table->timestamp('waktu_pelaksanaan');
             $table->timestamp('jadwal_realisasi');
+            $table->string('images')->nullable();
+            $table->string('videos')->nullable();
             $table->timestamps();
         });
     }

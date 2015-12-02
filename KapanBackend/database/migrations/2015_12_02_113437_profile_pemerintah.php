@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminProfiles extends Migration
+class ProfilePemerintah extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,10 @@ class CreateAdminProfiles extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('fullname');
-            $table->string('status_auth'); //admin
-            $table->boolean('is_active');
+            $table->text('deskripsi_profile')->nullable();
+            $table->enum('jenis_pejabat', array('negara', 'daerah')); // negara / daerah
+            $table->string('status_auth')->default('admin');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

@@ -15,7 +15,8 @@ class VerifyCsrfToken extends BaseVerifyCsrfToken {
      */
     protected $except_urls = [
         'auth/rakyat/*',
-        'admin/*'
+        'admin/*', //TODO:HAPUS KL UDAH ADA CLIENT
+        'rakyat/*' //TODO:HAPUS KL UDAH ADA CLIENT
     ];
 
     /**

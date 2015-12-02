@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectComments extends Migration
+class ProjectPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,13 @@ class CreateProjectComments extends Migration
      */
     public function up()
     {
-        Schema::create('project_comments', function (Blueprint $table) {
+        Schema::create('project_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('project_info_id')->unsigned();
-            $table->foreign('project_info_id')->references('id')->on('project_info')->onDelete('cascade');
             $table->integer('profile_rakyat_id')->unsigned();
             $table->foreign('profile_rakyat_id')->references('id')->on('profile_rakyat')->onDelete('cascade');
-            $table->string('comment');
-            $table->integer('like_dislike_project'); // like=1 | dislike=-1
-            $table->integer('like_comment');
-            $table->integer('dislike_comment');
+            $table->integer('project_info_or_progress_id');
+            $table->text('post');
+            $table->string('post_image');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateProjectComments extends Migration
      */
     public function down()
     {
-        Schema::drop('project_comments');
+        Schema::drop('project_posts');
     }
 }

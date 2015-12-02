@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRakyatProfile extends Migration
+class ProfileRakyat extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateRakyatProfile extends Migration
             $table->string('facebook_token')->nullable();
             $table->string('google_token')->nullable();
             $table->string('fullname')->nullable();
-            $table->string('status_auth'); //rakyat
+            $table->string('status_auth')->default('rakyat');
             $table->timestamps();
         });
     }

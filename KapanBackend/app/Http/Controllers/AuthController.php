@@ -56,8 +56,6 @@ class AuthController extends Controller
         $admin->fullname = $request->input('fullname');
         $admin->email = $request->input('email');
         $admin->password = Hash::make($request->input('password'));
-        $admin->status_auth = 'admin';
-        $admin->is_active = false;
         $admin->save();
 
         return response()->json(['token' => $this->generateToken($admin)]);
@@ -126,7 +124,6 @@ class AuthController extends Controller
         $rakyat->fullname = $request->input('fullname');
         $rakyat->email = $request->input('email');
         $rakyat->password = Hash::make($request->input('password'));
-        $rakyat->status_auth = 'rakyat';
         $rakyat->save();
 
         return response()->json(['token' => $this->generateToken($rakyat)]);
@@ -177,7 +174,6 @@ class AuthController extends Controller
             $rakyat = ProfileRakyat::find($payload['sub']);
             $rakyat->google_token = $profile['sub'];
             $rakyat->fullname = $profile['name'];
-            $rakyat->status_auth = 'rakyat';
             $rakyat->save();
 
             return response()->json(['token' => $this->generateToken($rakyat)]);
@@ -193,7 +189,6 @@ class AuthController extends Controller
             $rakyat = new ProfileRakyat;
             $rakyat->google_token = $profile['sub'];
             $rakyat->fullname = $profile['name'];
-            $rakyat->status_auth = 'rakyat';
             $rakyat->save();
 
             return response()->json(['token' => $this->generateToken($rakyat)]);
@@ -233,7 +228,6 @@ class AuthController extends Controller
             $rakyat = ProfileRakyat::find($payload['sub']);
             $rakyat->facebook_token = $profile['id'];
             $rakyat->fullname = $profile['name'];
-            $rakyat->status_auth = 'rakyat';
             $rakyat->save();
 
             return response()->json(['token' => $this->generateToken($rakyat)]);
@@ -249,7 +243,6 @@ class AuthController extends Controller
             $rakyat = new ProfileRakyat;
             $rakyat->facebook_token = $profile['id'];
             $rakyat->fullname = $profile['name'];
-            $rakyat->status_auth = 'rakyat';
             $rakyat->save();
 
             return response()->json(['token' => $this->generateToken($rakyat)]);

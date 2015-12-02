@@ -28,6 +28,7 @@ class Authenticate
     {
         $this->auth = $auth;
         $this->adminUri = ['admin/*'];
+        $this->rakyatUri = ['rakyat/*'];
     }
 
     /**
@@ -45,10 +46,18 @@ class Authenticate
             }
 
             $page = explode('/', $request->path());
-            $regex = '#' . implode('|', $this->adminUri) . '#';
-            if(preg_match($regex, $request->path()) && $payload['status_auth'] != $page[0]){
+            $regexA = '#' . implode('|', $this->adminUri) . '#';
+            $regexR = '#' . implode('|', $this->rakyatUri) . '#';
+
+            // user filter admin
+            if(preg_match($regexA, $request->path()) && $payload['status_auth'] != $page[0]){
                 return response()->json(['error'=>true, 'errmsg' => 'cannot access admin page!']);
             }
+
+            // user filter rakyat
+            if(preg_match($regexR, $request->path()) && $payload['status_auth'] != $page[0]){
+                return response()->json(['error'=>true, 'errmsg' => 'cannot access rakyat page!']);
+            }            
 
             $request['user'] = $payload;
 
