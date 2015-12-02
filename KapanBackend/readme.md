@@ -30,6 +30,8 @@ KapanServer adalah backend dari project Kawal pembangunan Hackataon 3.0. Dibangu
 * #### Authenticate
 | HTTP | URL                 | Keterangan | Request                                                | Response        |
 | ---  |:------------------- | :----------| ------------------------------------------------------ | --------------- |
+| POST | /auth/admin/login | admin login |{"email": "pemerintah@id.com", "password": "testpass"} | {"token":"xxx"} |
+| POST | /auth/admin/register | register new admin |{"fullname": "xxx", "email": "xxx", "password": "xxx"} | {"token":"xxx"} |
 | POST | /auth/rakyat/signup | rakyat signup |{"fullname": "xxx", "email": "xxx", "password": "xxx"} | {"token":"xxx"} |
 | POST | /auth/rakyat/login  | rakyat login |{"email": "xxx", "password": "xxx"}| {"token":"xxx"} |
 | POST | /auth/rakyat/google | rakyat login via google |OAuth2 | {"token":"xxx"} |
