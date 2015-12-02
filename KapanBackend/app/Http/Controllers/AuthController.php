@@ -26,7 +26,7 @@ class AuthController extends Controller
      */
     private function generateToken($user){
         $payload = [
-            'sub'         => $user->id,
+            'user_id'     => $user->id,
             'status_auth' => $user->status_auth,
             'iat'         => time(),
             'exp'         => time() + (2 * 7 * 24 * 60 * 60) // expire 1 tahun

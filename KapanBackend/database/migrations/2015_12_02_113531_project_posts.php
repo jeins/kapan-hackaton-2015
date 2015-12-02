@@ -16,9 +16,9 @@ class ProjectPosts extends Migration
             $table->increments('id');
             $table->integer('profile_rakyat_id')->unsigned();
             $table->foreign('profile_rakyat_id')->references('id')->on('profile_rakyat')->onDelete('cascade');
-            $table->integer('project_info_or_progress_id');
+            $table->string('project_info_or_progress_id'); // i_1 => info with id 1 | p_2 => progress with id 2
             $table->text('post');
-            $table->string('post_image');
+            $table->string('post_image')->nullable();
             $table->timestamps();
         });
     }

@@ -44,6 +44,14 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middle
 // ===============================================
 $app->group(['prefix' => 'rakyat', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
     $app->get('profile', 'ProfileRakyatController@getRakyat');
+
+    $app->post('/post/project/', 'ProjectPostController@addPostInProject');
+
+    $app->put('/post/{id}', 'ProjectPostController@editPost');
+
+    $app->post('/like/post', 'ProjectPostController@likePost');
+
+    $app->post('/unlike/post', 'ProjectPostController@unlikePost');
 });
 
 // ===============================================
