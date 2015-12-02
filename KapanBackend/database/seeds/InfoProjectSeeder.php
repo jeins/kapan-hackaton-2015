@@ -27,7 +27,7 @@ class InfoProjectSeeder extends Seeder
             [
                 'profile_pemerintah_id'     => '2',
                 'nama'              => 'Pembangunan Kereta Kencana',
-                'jenis'             => 'negara',
+                'jenis'             => 'daerah',
                 'deskripsi'         => 'project ini adalah .....',
                 'outcome'           => 'project ini adalah .....',
                 'lokasi'            => '{long:123, lat:456}',

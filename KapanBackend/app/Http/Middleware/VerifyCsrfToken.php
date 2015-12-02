@@ -14,7 +14,8 @@ class VerifyCsrfToken extends BaseVerifyCsrfToken {
      * @var array
      */
     protected $except_urls = [
-        'auth/rakyat/*'
+        'auth/rakyat/*',
+        'admin/*'
     ];
 
     /**

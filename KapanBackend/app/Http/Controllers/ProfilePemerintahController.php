@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfilePemerintah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilePemerintahController extends Controller
 {
@@ -31,24 +32,6 @@ class ProfilePemerintahController extends Controller
     }
 
     /**
-     * save new profile, email must be unique
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function addNewProfiles(Request $request){
-        $emailExist = ProfilePemerintah::where('email', '=', $request->input('email'))->count();
-
-        if($emailExist > 0){
-            return response()->json(['error' => true, 'errmsg'=>'email exist'], 208);
-        }
-
-        $profile = ProfilePemerintah::create($request->all());
-
-        return response()->json($profile);
-    }
-
-    /**
      * update selected profile
      *
      * @request PUT
@@ -60,7 +43,7 @@ class ProfilePemerintahController extends Controller
         $profilePemerintah = ProfilePemerintah::find($id);
 
         $profilePemerintah->email = $request->input('email');
-        $profilePemerintah->password = $request->input('password'); // TODO: ADD HASH before save to DB
+        $profilePemerintah->password = Hash::make($request->input('password'));
         $profilePemerintah->fullname = $request->input('fullname');
 
         $profilePemerintah->save();

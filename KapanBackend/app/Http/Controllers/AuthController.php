@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use JWT;
 use GuzzleHttp;
 use App\Models\ProfileRakyat;
+use App\Models\ProfilePemerintah;
 use Symfony\Component\HttpFoundation\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,18 +21,67 @@ class AuthController extends Controller
     /**
      * generate token
      *
-     * @param $rakyat
+     * @param $user
      * @return string
      */
-    private function generateToken($rakyat){
+    private function generateToken($user){
         $payload = [
-            'sub'         => $rakyat->id,
-            'status_auth' => $rakyat->status_auth,
+            'sub'         => $user->id,
+            'status_auth' => $user->status_auth,
             'iat'         => time(),
             'exp'         => time() + (2 * 7 * 24 * 60 * 60) // expire 1 tahun
         ];
 
         return JWT::encode($payload, $this->token_secret);
+    }
+
+    /**
+     * register new admin
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function registerNewAdmin(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email'     => 'required|email|enique:profile_pemerintah,email',
+            'password'  => 'required',
+            'fullname'  => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['error' => true, 'errmsg' => $validator->messages()], 400);
+        }
+
+        $admin = new ProfilePemerintah();
+        $admin->fullname = $request->input('fullname');
+        $admin->email = $request->input('email');
+        $admin->password = Hash::make($request->input('password'));
+        $admin->status_auth = 'admin';
+        $admin->is_active = false;
+        $admin->save();
+
+        return response()->json(['token' => $this->generateToken($admin)]);
+    }
+
+    /**
+     * admin login
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function loginAdmin(Request $request){
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $admin = ProfilePemerintah::where('email', '=', $email)->first();
+
+        if($admin && Hash::check($password, $admin->password) && $admin->is_active){
+            unset($admin->password);
+
+            return response()->json(['token' => $this->generateToken($admin)]);
+        }
+
+        return response()->json(['error' => true, 'errmsg' => 'Wrong Email / Password'], 401);
     }
 
     /**

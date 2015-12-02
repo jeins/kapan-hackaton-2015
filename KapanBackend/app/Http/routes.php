@@ -14,8 +14,14 @@
 $app->get('/', 'HomeController@index');
 $app->get('/api/me', ['middleware' => 'auth', 'uses' => 'ProfileRakyatController@getRakyat']);
 
-########### Auth
+// ===============================================
+// AUTH (Login/Signup) SECTION ===================
+// ===============================================
 $app->group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers'], function($app){
+    $app->post('admin/login', 'AuthController@loginAdmin');
+
+    $app->post('admin/register', 'AuthController@registerNewAdmin');
+
     $app->post('rakyat/signup', 'AuthController@signupRakyat');
 
     $app->post('rakyat/login', 'AuthController@loginRakyat');
@@ -23,7 +29,9 @@ $app->group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers'], functio
     $app->post('rakyat/google', 'AuthController@googleOAuth');
 });
 
-
+// ===============================================
+// ADMIN SECTION =================================
+// ===============================================
 $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
     $app->post('profile', 'ProfilePemerintahController@addNewProfiles');
 
@@ -34,7 +42,9 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middle
     $app->put('project/{id}', 'ProjectInfoController@updateProject');
 });
 
-
+// ===============================================
+// API SECTION ===================================
+// ===============================================
 $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
     $app->get('profiles', 'ProfilePemerintahController@getProfiles');
 

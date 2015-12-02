@@ -18,6 +18,7 @@ class CreateAdminProfiles extends Migration
             $table->string('password');
             $table->string('fullname');
             $table->string('status_auth'); //admin
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
