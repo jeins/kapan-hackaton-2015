@@ -2,7 +2,7 @@ angular.module('App')
     .factory('Account', function($http) {
         return {
             getProfile: function() {
-                return $http.get('/api/me');
+                return $http.get('/rakyat/profile');
             },
             getProjects: function() {
                 return $http.get('/api/projects');

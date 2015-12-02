@@ -43,7 +43,7 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middle
 // Rakyat SECTION ================================
 // ===============================================
 $app->group(['prefix' => 'rakyat', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
-    $app->get('me', 'ProfileRakyatController@getRakyat');
+    $app->get('profile', 'ProfileRakyatController@getRakyat');
 });
 
 // ===============================================
