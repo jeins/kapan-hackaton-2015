@@ -13,4 +13,8 @@ class ProjectProgress extends Model
 	public function project(){
 		return $this->belongsTo('App\Models\ProjectInfo');
 	}
+
+	public function projectPost(){
+		return $this->hasMany('\App\Models\ProjectPost');
+	}
 }

@@ -17,6 +17,10 @@ class ProjectInfo extends Model
     }
 
     public function projectProgress(){
-    	return $this->hashMany('App\Models\ProjectProgress');
+    	return $this->hasMany('App\Models\ProjectProgress');
+    }
+
+    public function projectPost(){
+        return $this->hasMany('\App\Models\ProjectPost');
     }
 }

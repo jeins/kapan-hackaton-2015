@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\Hash;
 
 class ProjectPostController extends Controller
 {
-    public function addPostInProject(Request $request){
+    public function addPostInProjectInfoOrProgress(Request $request, $id){
         $post = new ProjectPost();
         $post->profile_rakyat_id = $request['user']['user_id'];
-        $post->project_info_or_progress_id = $request->input('project_info_or_progress_id');
+        if(strpos($request->path(), 'project')){
+            $post->project_info_id = $id;
+        } else if(strpos($request->path(), 'progress')){
+            $post->project_progress_id = $id;
+        }
         $post->post = $request->input('post');
         //$post->post_image = $request->input('post_image');
 

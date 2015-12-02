@@ -45,7 +45,9 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middle
 $app->group(['prefix' => 'rakyat', 'namespace' => 'App\Http\Controllers', 'middleware' => 'auth'], function($app){
     $app->get('profile', 'ProfileRakyatController@getRakyat');
 
-    $app->post('/post/project/', 'ProjectPostController@addPostInProject');
+    $app->post('/post/project/{id}', 'ProjectPostController@addPostInProjectInfoOrProgress');
+
+    $app->post('/post/progress/{id}', 'ProjectPostController@addPostInProjectInfoOrProgress');
 
     $app->put('/post/{id}', 'ProjectPostController@editPost');
 
@@ -67,4 +69,6 @@ $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers'], function
     $app->get('project/{id}', 'ProjectInfoController@getProjectById');
 
     $app->get('project/pemerintah/{id}', 'ProjectInfoController@getProjectByPemerintah');
+
+    $app->get('post/project/{id}', 'ProjectInfoController@getProjectInfoComments');
 });

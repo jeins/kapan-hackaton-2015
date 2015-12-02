@@ -30,7 +30,9 @@ class ProjectInfoController extends Controller
     public function getProjectById($id){
         $project = ProjectInfo::find($id);
 
-        return response()->json($project);
+        $totalCommands = $project->projectPost->count();
+
+        return response()->json(array_merge($project->toArray(), ['total_komentar' => $totalCommands]));
     }
 
     /**
@@ -91,5 +93,13 @@ class ProjectInfoController extends Controller
             return response()->json($project);
         }
         return response()->json(['error' => true, 'errmsg' => 'tidak berwenang merubah project dari pemerintah lainnya']);
+    }
+
+    public function getProjectInfoComments($id){
+        $project = ProjectInfo::find($id);
+
+        $comments = $project->projectPost;
+
+        return response()->json($comments);
     }
 }

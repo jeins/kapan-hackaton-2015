@@ -17,6 +17,7 @@ class ProjectProgress extends Migration
             $table->integer('project_info_id')->unsigned();
             $table->foreign('project_info_id')->references('id')->on('project_info')->onDelete('cascade');
             $table->text('description');
+            $table->integer('angka_progress');
             $table->timestamp('tanggal_update');
             $table->timestamps();
         });

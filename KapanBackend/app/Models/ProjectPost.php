@@ -15,6 +15,14 @@ class ProjectPost extends Model
 	}
 
 	public function projectPostLike(){
-		return $this->hashMany('App\Models\ProjectPostLike');
+		return $this->hasMany('App\Models\ProjectPostLike');
+	}
+
+	public function projectInfo(){
+		return $this->belongsTo('App\Models\ProjectInfo');
+	}
+
+	public function projectProgress(){
+		return $this->belongsTo('App\Models\ProjectProgress');
 	}
 }
