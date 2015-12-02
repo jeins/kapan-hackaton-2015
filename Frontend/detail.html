@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="App">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Bangun Indonesia</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+  <script src="js/bangun.js"></script>
 
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,34 +27,12 @@
    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
+
 <body>
-  <nav class="navbar navbar-default bc_main">
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-          <a class="navbar-brand" href="#"> Bangun<b>Indonesia</b> </a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <p class="navbar-text navbar-right"><a href="#" class="navbar-link">Daftar</a></p>
-          <p class="navbar-text navbar-right"><a href="#" class="navbar-link">Masuk</a></p>
-        </div>
-        </div>
-        <div class="col-md-1"></div>
-      </div>
-    </div>
-  </nav>
+  <div navigation></div>
 
-
-  <div class="container-fluid detail_container">
+  <div class="container-fluid detail_container" ng-controller="getProjectDetail">
     <div class="row">
       <div class="col-md-1"></div>
 
@@ -53,9 +40,14 @@
         <div class="row detail_preview_header">
             <div class="col-md-5 col-sm-5"><img src="asset/monas.jpg" alt="" /></div>
             <div class="col-md-7 col-sm-7 dph_right">
-              <div class="judul_proyek">  Monumen Nasional </div>
+              <div class="judul_proyek">  {{ project.nama }} </div>
               <div class="lokasi_proyek"> DKI Jakarta </div>
-              <div class="status_proyek"> Sedang Dikerjakan </div>
+              <div class="status_proyek" ng-switch on="project.status_selesai">
+                <span ng-switch-when="0">Sedang Dikerjakan</span>
+                <span ng-switch-when="1">Rencana</span>
+                <span ng-switch-when="2">Berhenti</span>
+                <span ng-switch-when="3">Selesai</span>
+              </div>
             </div>
         </div>
 
@@ -71,7 +63,7 @@
                   </div>
                 </div>
 
-                <div class="data_biaya text-center"> Rp 50.000.000.000  </div>
+                <div class="data_biaya text-center"> Rp {{ project.biaya }}  </div>
                 <div class="data_waktu text-center"> 5 tahun  </div>
 
                 <div class="data_progress progress">
@@ -83,10 +75,10 @@
 
               </div>
               <div class="col-md-8 detail_right_box">
-                <h3> Apa itu Monumen Nasional?</h3>
-                <p>The main Sudirman-Thamrin avenues in Jakarta lead to the Merdeka Square, where in its center stands the National Monument (also known as Monas--Monumen Nasional) which houses the first red-and-white flag flown at the Proclamation of Independence on 17 August 1945. This flag has now become threadbare, and so nowadays on Independence Day ceremonies, the original flag is taken out but only to accompany the replica flag to be flown in front of the Merdeka Palace. The 137 meter tall National Monument is obelisk shaped, and is topped with a 14.5 meter bronze flame coated with 32 kilograms gold leaf. Within the pedestal is a museum depicting in diorama Indonesia’s fight for Independence as well as the original text of the Proclamation of Independence. A lift takes visitors up to the look-out platform at the base of the flame for a grand view of Jakarta.</p>
+                <h3> Apa itu {{ project.nama }}?</h3>
+                <p>{{ project.deskripsi }}</p>
                 <h3> Apa Manfaatnya?</h3>
-                <p>At the Proclamation of Independence on 17 August 1945. This flag has now become threadbare, and so nowadays on Independence Day ceremonies, the original flag is taken out but only to accompany the replica flag to be flown in front of the Merdeka Palace. The 137 meter tall National Monument is obelisk shaped, and is topped with a 14.5 meter bronze flame coated with 32 kilograms gold leaf. Within the pedestal is a museum depicting in diorama Indonesia’s fight for Independence as well as the original text of the Proclamation of Independence. A lift takes visitors up to the look-out platform at the base of the flame for a grand view of Jakarta.</p>
+                <p>{{ project.outcome }}</p>
               </div>
            </div>
 
@@ -123,7 +115,7 @@
          </div><!-- end col-md-10-->
 
     </div>
-  </div>
+  </div> <!-- end detail wrapper-->
 
 
   <!-- Modal -->
@@ -163,15 +155,6 @@
     </div>
   </div>
 
-  <br><br>
-
-  <footer class="footer">
-      <p> Dibuat di Berlin, 2015 </p>
-  </footer>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
-   <script src="bootstrap/js/bootstrap.min.js"></script>
+  <div footer></div>
 </body>
 </html>
