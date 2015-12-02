@@ -53,7 +53,7 @@ $app->group(['prefix' => 'rakyat', 'namespace' => 'App\Http\Controllers', 'middl
 
     $app->post('post/like', 'ProjectPostController@likePost');
 
-    $app->post('post/unlike', 'ProjectPostController@unlikePost');
+    $app->delete('post/unlike', 'ProjectPostController@unlikePost');
 
     $app->post('comment/post/{id}', 'PostCommentsController@addCommentToPost');
 });
