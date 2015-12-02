@@ -18,7 +18,6 @@ class PemerintahProfileSeeder extends Seeder
                 'password'      => Hash::make('testpass'),
                 'fullname'      => 'Menteri Pembangunan',
                 'jenis_pejabat' => 'negara',
-                'status_auth'   => 'admin',
                 'is_active'     => true
             ],
             [
@@ -26,11 +25,9 @@ class PemerintahProfileSeeder extends Seeder
                 'password'      => Hash::make('testing'),
                 'fullname'      => 'Gubernur DKI Jakarta',
                 'jenis_pejabat' => 'daerah',
-                'status_auth'   => 'admin',
                 'is_active'     => true
             ]
         ];
-
 
         DB::table('profile_pemerintah')->insert($profiles);
     }

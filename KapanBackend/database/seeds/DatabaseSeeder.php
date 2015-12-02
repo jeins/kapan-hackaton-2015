@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call('PemerintahProfileSeeder');
         $this->call('InfoProjectSeeder');
+        $this->call('ProfileRakyatSeeder');
+        $this->call('ProjectPostSeeder');
+        $this->call('PostCommentsSeeder');
 
         Model::reguard();
     }

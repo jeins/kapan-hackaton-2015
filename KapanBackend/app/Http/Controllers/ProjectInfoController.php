@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProjectInfo;
 use App\Models\ProfilePemerintah;
+use App\Models\PostComment;
 use Illuminate\Http\Request;
 
 class ProjectInfoController extends Controller
@@ -98,8 +99,17 @@ class ProjectInfoController extends Controller
     public function getProjectInfoComments($id){
         $project = ProjectInfo::find($id);
 
-        $comments = $project->projectPost;
+        $posts = $project->projectPost->toArray();
 
-        return response()->json($comments);
+        $index = 0;
+        foreach ($posts as $post) {
+            $comments = PostComment::where('project_posts_id', '=', $post['id'])->get()->toArray();
+            if(sizeof($comments) > 0){
+                $posts[$index] = array_merge($posts[$index], ['comments' => $comments]);
+            }
+            $index++;
+        }
+
+        return response()->json($posts);
     }
 }
