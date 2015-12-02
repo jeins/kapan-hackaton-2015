@@ -14,9 +14,11 @@ class ProjectPostLike extends Migration
     {
         Schema::create('project_post_like', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('like_count');
             $table->integer('project_posts_id')->unsigned();
             $table->foreign('project_posts_id')->references('id')->on('project_posts')->onDelete('cascade');
+            $table->integer('profile_rakyat_id')->unsigned();
+            $table->foreign('profile_rakyat_id')->references('id')->on('profile_rakyat')->onDelete('cascade');
+            $table->integer('like_count');
             $table->timestamps();
         });
     }

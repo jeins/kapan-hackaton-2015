@@ -15,4 +15,8 @@ class ProjectInfo extends Model
     public function profilePemerintah(){
         return $this->belongsTo('App\Models\ProfilePemerintah');
     }
+
+    public function projectProgress(){
+    	return $this->hashMany('App\Models\ProjectProgress');
+    }
 }
