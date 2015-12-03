@@ -5,35 +5,7 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http, $locatio
 
   //--------------- get all projects ----------------------------------
   bangunService.getProjects(function(response){
-
-        var data = response.data;
-        var testing;
-        $scope.projects = data;
-
-        for(var i=0; i<Object.keys(data).length; i++){
-
-            /* pakai ini jalan, tapi bagusnya ga usah pakai service 2x kl memungkinkan, takutnya kl internet lemot datanya ga sync krn proses service ini async.
-            bangunService.getProfilePemerintah(response.data[i].profile_pemerintah_id).then(function(result){
-              push_nama(result.fullname, result.id);
-            });*/
-
-            // console.log( i + " Harusnnya urutannya " + response.data[i].profile_pemerintah_id);
-            $http.get(_URL + '/api/profile/' + response.data[i].profile_pemerintah_id)
-            .success(function(dataP) {
-                push_nama(dataP.fullname, dataP.id);
-            });
-        }
-
-       //add nama pemerintah ke view kartu
-       var helper = 0;
-       function push_nama(nama, id){
-
-           var id_projek     = response.data[helper].id;
-           var id_pemerintah = response.data[helper].profile_pemerintah_id;
-
-          $('#oleh_'+ id_pemerintah + '_id_'+ id_projek).text("Oleh: " + nama);
-          helper++;
-       }
+        $scope.projects = response.data;
   });
 
   //--------------- leaflet Map @Home ----------------------------------
