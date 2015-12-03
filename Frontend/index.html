@@ -9,7 +9,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-  <script src="js/bangun.js"></script>
+
+  <!-- Custom Angular JS Untuk Kapan -->
+  <script src="js/bangunConfig.js"></script>
+  <script src="js/bangunDirective.js"></script>
+  <script src="js/bangunService.js"></script>
+  <script src="js/bangunController.js"></script>
 
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +63,7 @@
         <div class="col-md-10">
           <div class="row">
 
-          <div ng-controller="getProjects">
+          <div ng-controller="mainCtrl">
               <div ng-repeat="project in projects">
 
               <a ng-href="detail.html#{{project.id}}">
@@ -66,7 +71,7 @@
                   <div class="card">
                     <div class="card-block">
                       <h4 class="card-title">{{ project.nama }}</h4>
-                      <h6 class="card-subtitle text-muted" id="oleh_id_{{ project.profile_pemerintah_id }}"></h6>
+                      <h6 class="card-subtitle text-muted" id="oleh_{{ project.profile_pemerintah_id }}_id_{{ project.id }}"></h6>
                     </div>
                     <img src="asset/monas.jpg" alt="Card image">
                     <div class="card-block">

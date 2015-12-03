@@ -9,7 +9,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-  <script src="js/bangun.js"></script>
+
+  <!-- Custom Angular JS Untuk Kapan -->
+  <script src="js/bangunConfig.js"></script>
+  <script src="js/bangunDirective.js"></script>
+  <script src="js/bangunService.js"></script>
+  <script src="js/bangunController.js"></script>
 
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +37,7 @@
 
   <div navigation></div>
 
-  <div class="container-fluid detail_container" ng-controller="getProjectDetail">
+  <div class="container-fluid detail_container" ng-controller="mainCtrl">
     <div class="row">
       <div class="col-md-1"></div>
 
@@ -153,7 +158,7 @@
       </div>
 
     </div>
-  </div>
+  </div><!-- end myModal -->
 
   <div footer></div>
 </body>
