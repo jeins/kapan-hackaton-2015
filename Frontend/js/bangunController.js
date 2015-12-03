@@ -11,11 +11,11 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http){
 
         for(var i=0; i<Object.keys(data).length; i++){
 
-            // console.log("test " + i + response.data[i].profile_pemerintah_id);
-
+            console.log( i + " Harusnnya urutannya " + response.data[i].profile_pemerintah_id);
             $http.get(_URL + '/api/profile/' + response.data[i].profile_pemerintah_id)
             .success(function(dataP) {
-                 push_nama(dataP.fullname, dataP.id);
+                console.log(" jadinya " + dataP.id);
+                push_nama(dataP.fullname, dataP.id);
             });
         }
 
@@ -40,7 +40,7 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http){
       //get info pemilik proyek
       $http.get(_URL + '/api/profile/' + data.profile_pemerintah_id)
       .success(function(dataP) {
-           console.log(dataP);
+           $('#jabatan_pemilik').text(dataP.fullname);
       });
   });
 
