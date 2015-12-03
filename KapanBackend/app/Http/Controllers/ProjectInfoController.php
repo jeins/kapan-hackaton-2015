@@ -17,7 +17,7 @@ class ProjectInfoController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getAllProject(){
-        $projects = ProjectInfo::all();
+        $projects = ProjectInfo::with('profilePemerintah')->get();
 
         return response()->json($projects);
     }
