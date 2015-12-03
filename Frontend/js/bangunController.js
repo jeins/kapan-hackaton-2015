@@ -7,14 +7,19 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http, $locatio
   bangunService.getProjects(function(response){
 
         var data = response.data;
+        var testing;
         $scope.projects = data;
 
         for(var i=0; i<Object.keys(data).length; i++){
 
+            /* pakai ini jalan, tapi bagusnya ga usah pakai service 2x kl memungkinkan, takutnya kl internet lemot datanya ga sync krn proses service ini async.
+            bangunService.getProfilePemerintah(response.data[i].profile_pemerintah_id).then(function(result){
+              push_nama(result.fullname, result.id);
+            });*/
+
             // console.log( i + " Harusnnya urutannya " + response.data[i].profile_pemerintah_id);
             $http.get(_URL + '/api/profile/' + response.data[i].profile_pemerintah_id)
             .success(function(dataP) {
-                // console.log(dataP);
                 push_nama(dataP.fullname, dataP.id);
             });
         }
