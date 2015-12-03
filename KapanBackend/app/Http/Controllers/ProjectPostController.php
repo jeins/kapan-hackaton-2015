@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ProjectPostController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addPostInProjectInfoOrProgress(Request $request, $id){
         $post = new ProjectPost();
         $post->profile_rakyat_id = $request['user']['user_id'];
@@ -25,6 +30,11 @@ class ProjectPostController extends Controller
         return response()->json($post);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function editPost(Request $request, $id){
         $currentUser = $request['user']['user_id'];
         
@@ -42,6 +52,10 @@ class ProjectPostController extends Controller
         return response()->json(['error'=>true, 'errmsg' => 'cannot edit post by other user!'], 400);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function likePost(Request $request){
 
         $alreadyLikePost = ProjectPostLike::where('project_posts_id', '=', $request->input('project_posts_id'))
@@ -60,6 +74,10 @@ class ProjectPostController extends Controller
         return response()->json(['error' => true, 'errmsg' => 'already like this post']);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function unlikePost(Request $request){
         $alreadyLikePost = ProjectPostLike::where('project_posts_id', '=', $request->input('project_posts_id'))
                             ->where('profile_rakyat_id', '=', $request['user']['user_id'])->count();
