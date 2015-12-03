@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------------------
-//--------------------- bangunApp Controller ---------------------------------------------------------
+//--------------------- bangunApp Main Controller ---------------------------------------------------
 //---------------------------------------------------------------------------------------------------
 bangunApp.controller('mainCtrl', function($scope, bangunService, $http, $location){
 
@@ -37,37 +37,11 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http, $locatio
       var data = response.data;
       $scope.project = data;
 
-      //get info pemilik proyek
+      //get info pemilik proyek untuk di halaman detail.html
       $http.get(_URL + '/api/profile/' + data.profile_pemerintah_id)
       .success(function(dataP) {
            $('#jabatan_pemilik').text(dataP.fullname);
       });
-  });
-
-
-  //--------------- get Profil ----------------------------------------
-  bangunService.getProfile(function(response){
-      $scope.profil_infos = response.data;
-  });
-
-  //--------------- total Proyek per Pemerintah -----------------------
-  bangunService.getProjectEach(function(response){
-        var hash_pemId = $location.hash();
-        var totalProyek = 0;
-        var data = response.data;
-        var arrayProject = [];
-
-        for(var i=0; i<Object.keys(data).length; i++){
-
-            if(hash_pemId == data[i].profile_pemerintah_id){
-              arrayProject[totalProyek] = data[i];
-              totalProyek ++;
-            }
-
-        }
-
-        $scope.projectsEach = arrayProject;
-        $scope.profil_infos.totalProyek = totalProyek;
   });
 
   //--------------- login Pemerintah ----------------------------------
@@ -97,5 +71,36 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http, $locatio
    $('#map').fadeOut();
    $('#kartu_proyek').fadeIn();
   }
+
+});
+
+
+//---------------------------------------------------------------------------------------------------
+//--------------------- bangunApp Prof Controller ---------------------------------------------------
+//---------------------------------------------------------------------------------------------------
+bangunApp.controller('profilCtrl', function($scope, bangunService, $http, $location){
+
+    //--------------- get Profil ----------------------------------------
+    bangunService.getProfile(function(response){
+        $scope.profil_infos = response.data;
+    });
+
+    //--------------- total Proyek per Pemerintah -----------------------
+    bangunService.getProjectEach(function(response){
+          var hash_pemId = $location.hash();
+          var totalProyek = 0;
+          var data = response.data;
+          var arrayProject = [];
+
+          for(var i=0; i<Object.keys(data).length; i++){
+              if(hash_pemId == data[i].profile_pemerintah_id){
+                arrayProject[totalProyek] = data[i];
+                totalProyek ++;
+              }
+          }
+
+          $scope.projectsEach = arrayProject;
+          $scope.profil_infos.totalProyek = totalProyek;
+    });
 
 });
