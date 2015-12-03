@@ -95,6 +95,25 @@ bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $lo
       });
   };
 
+  //--------------- register Pemerintah ----------------------------------
+  $scope.registerSubmit = function(){
+      // console.log(this.username);
+      var inputData = {
+        fullname: this.fullname,
+        jabatan: this.jabatan,
+        email: this.email,
+        password: this.password
+      };
+
+      $http.post(_URL + '/auth/admin/signup', inputData)
+      .success(function(data) {
+        console.log(data.token);
+      })
+      .error(function(data){
+        console.log("cannot signup!");
+      });
+  };
+
 });
 
 //---------------------------------------------------------------------------------------------------
@@ -132,6 +151,7 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
 
       var hash_proyek_id = $location.hash();
 
+      //belum ada progressbar
       var inputData = {
         id_proyek: hash_proyek_id,
         nama: this.judul_proyek,

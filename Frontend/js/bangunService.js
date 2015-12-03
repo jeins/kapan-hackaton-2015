@@ -26,7 +26,7 @@ bangunApp.service('bangunService', function($http, $location, $q){
     $http
         .get(_URL + "/api/profile/" + $id)
         .then(function(result){
-            deferred.resolve(result.data);  
+            deferred.resolve(result.data);
         })
         .catch(function(error){
             deferred.reject(error);
