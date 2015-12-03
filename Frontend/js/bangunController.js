@@ -97,7 +97,7 @@ bangunApp.controller('detailCtrl', function($scope, bangunService, $http, $locat
 });
 
 //---------------------------------------------------------------------------------------------------
-//--------------------- Admin Dashboard Controller -------------------------------------------------
+//--------------------- Login Dashboard Controller -------------------------------------------------
 //---------------------------------------------------------------------------------------------------
 bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $location){
 
@@ -115,6 +115,66 @@ bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $lo
       })
       .error(function(data){
         console.log("cannot login!");
+      });
+  };
+
+});
+
+//---------------------------------------------------------------------------------------------------
+//--------------------- Submit proyek Controller -------------------------------------------------
+//---------------------------------------------------------------------------------------------------
+bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $location){
+
+  //--------------- submit proyek baru ----------------------------------
+  $scope.submitProyek = function(){
+
+      var inputData = {
+        nama: this.judul_proyek,
+        profile_pemerintah_id: this.pem_id,
+        jenis: this.jenis_proyek,
+        deskripsi: this.desc_proyek,
+        file: this.file_proyek,
+        lokasi: this.lokasi,
+        status_selesai: this.status_proyek,
+        biaya: this.biaya,
+        outcome: this.outcome,
+        jadwal_terealisasi: this.targetWaktu_proyek
+      };
+
+      $http.post(_URL + '/admin/project', inputData)
+      .success(function(data) {
+        console.log("input proyek berhasil");
+      })
+      .error(function(data){
+        console.log("error input proyek");
+      });
+  };
+
+  //--------------- edit proyek lama ----------------------------------
+  $scope.submitEditProyek = function(){
+
+      var hash_proyek_id = $location.hash();
+
+      var inputData = {
+        id_proyek: hash_proyek_id,
+        nama: this.judul_proyek,
+        profile_pemerintah_id: this.pem_id,
+        jenis: this.jenis_proyek,
+        deskripsi: this.desc_proyek,
+        file: this.file_proyek,
+        lokasi: this.lokasi,
+        status_selesai: this.status_proyek,
+        biaya: this.biaya,
+        outcome: this.outcome,
+        jadwal_terealisasi: this.targetWaktu_proyek
+      };
+
+      $http.put(_URL + '/admin/project', inputData)
+      .success(function(data) {
+        console.log("edit proyek berhasil");
+      })
+      .error(function(data){
+        console.log("error edit proyek");
       });
   };
 
