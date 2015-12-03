@@ -31,36 +31,6 @@ bangunApp.controller('mainCtrl', function($scope, bangunService, $http, $locatio
        }
   });
 
-  //--------------- get project detail ----------------------------------
-  bangunService.getProjectDetail(function(response){
-
-      var data = response.data;
-      $scope.project = data;
-
-      //get info pemilik proyek untuk di halaman detail.html
-      $http.get(_URL + '/api/profile/' + data.profile_pemerintah_id)
-      .success(function(dataP) {
-           $('#jabatan_pemilik').text(dataP.fullname);
-      });
-  });
-
-  //--------------- login Pemerintah ----------------------------------
-  $scope.loginSubmit = function(){
-      // console.log(this.username);
-      var inputData = {
-        email: this.email,
-        password: this.password
-      };
-
-      $http.post(_URL + '/auth/admin/login', inputData)
-      .success(function(data) {
-        console.log(data.token);
-      })
-      .error(function(data){
-        console.log("cannot login!");
-      });
-  };
-
   //--------------- leaflet Map @Home ----------------------------------
   $scope.showPeta = function() {
    $('#kartu_proyek').fadeOut();
@@ -85,7 +55,7 @@ bangunApp.controller('profilCtrl', function($scope, bangunService, $http, $locat
         $scope.profil_infos = response.data;
     });
 
-    //--------------- total Proyek per Pemerintah -----------------------
+    //--------------- Info Proyek per Pemerintah -----------------------
     bangunService.getProjectEach(function(response){
           var hash_pemId = $location.hash();
           var totalProyek = 0;
@@ -102,5 +72,50 @@ bangunApp.controller('profilCtrl', function($scope, bangunService, $http, $locat
           $scope.projectsEach = arrayProject;
           $scope.profil_infos.totalProyek = totalProyek;
     });
+
+});
+
+
+//---------------------------------------------------------------------------------------------------
+//--------------------- bangunApp Halaman Detail Controller ------------------------------------------
+//---------------------------------------------------------------------------------------------------
+bangunApp.controller('detailCtrl', function($scope, bangunService, $http, $location){
+
+  //--------------- get project detail ----------------------------------
+  bangunService.getProjectDetail(function(response){
+
+      var data = response.data;
+      $scope.project = data;
+
+      //get info pemilik proyek untuk di halaman detail.html
+      $http.get(_URL + '/api/profile/' + data.profile_pemerintah_id)
+      .success(function(dataP) {
+           $('#jabatan_pemilik').text(dataP.fullname);
+      });
+  });
+
+});
+
+//---------------------------------------------------------------------------------------------------
+//--------------------- Admin Dashboard Controller -------------------------------------------------
+//---------------------------------------------------------------------------------------------------
+bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $location){
+
+  //--------------- login Pemerintah ----------------------------------
+  $scope.loginSubmit = function(){
+      // console.log(this.username);
+      var inputData = {
+        email: this.email,
+        password: this.password
+      };
+
+      $http.post(_URL + '/auth/admin/login', inputData)
+      .success(function(data) {
+        console.log(data.token);
+      })
+      .error(function(data){
+        console.log("cannot login!");
+      });
+  };
 
 });
