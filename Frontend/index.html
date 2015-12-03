@@ -25,6 +25,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
+    <!-- leaflet for map-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -42,7 +46,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <h1>Melalui data transparan dari pemerintah serta dukungan dan pengawasan rakyat, mari membangun Indonesia. </h1>
-          <a href="#proyek_wrapper"> <img src="asset/icon/scroll-down.png" alt="scroll down icon" class="img-middle scroll_down"></a>
+          <img src="asset/icon/scroll-down.png" alt="scroll down icon" class="img-middle scroll_down">
         </div>
         <div class="col-md-1"></div>
       </div>
@@ -50,12 +54,12 @@
   </div><!-- end landing-container-->
 
 
-  <div id="proyek_wrapper">
+  <div id="proyek_wrapper" ng-controller="mainCtrl">
     <div class="container">
       <div class="row sub-menu-wrapper">
         <div class="col-md-4"></div>
-        <div class="col-md-2 sub-menu text-center">Kartu Proyek</div>
-        <div class="col-md-2 sub-menu text-center">Peta Proyek</div>
+        <div class="col-md-2 sub-menu text-center" ng-click="showKartu()">Kartu Proyek</div>
+        <div class="col-md-2 sub-menu text-center" ng-click="showPeta()">Peta Proyek</div>
       </div>
 
       <div class="row">
@@ -63,7 +67,7 @@
         <div class="col-md-10">
           <div class="row">
 
-          <div ng-controller="mainCtrl">
+          <div id="kartu_proyek">
               <div ng-repeat="project in projects">
 
               <a ng-href="detail.html#{{project.id}}">
@@ -90,9 +94,10 @@
               </div> <!-- end ng-repeat -->
             </div> <!-- end ng-controller -->
 
+            <div id="map"></div>
+
           </div>
         </div>
-
 
         <div class="col-md-1"></div>
       </div>
@@ -100,6 +105,29 @@
   </div><!-- end proyek_wrapper-->
 
   <div footer></div>
+
+
+
+    <!-- leaflet map -->
+     <script>
+     // initialize the map
+     var map = L.map('map').setView([51.505, -0.09], 13);
+
+      // load a tile layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+       {
+         attribution: 'BangunApp',
+       }).addTo(map);
+     </script>
+
+     <script>
+        //smoothscroll
+        $(".scroll_down").click(function() {
+             $('html, body').animate({
+                 scrollTop: $("#proyek_wrapper").offset().top
+             }, 1000);
+         });
+   </script>
 
 </body>
 </html>

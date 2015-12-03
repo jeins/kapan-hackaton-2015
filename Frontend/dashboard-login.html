@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="App">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Bangun Indonesia</title>
+  <title>Dahboard Login Bangun Indonesia</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+
+  <!-- Custom Angular JS Untuk Kapan -->
+  <script src="js/bangunConfig.js"></script>
+  <script src="js/bangunDirective.js"></script>
+  <script src="js/bangunService.js"></script>
+  <script src="js/bangunController.js"></script>
 
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,74 +33,33 @@
   <![endif]-->
 </head>
 <body>
-  <nav class="navbar navbar-default bc_main">
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-          <a class="navbar-brand" href="#"> Bangun<b>Indonesia</b> </a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <p class="navbar-text navbar-right"><a href="#" class="navbar-link">Daftar</a></p>
-          <p class="navbar-text navbar-right"><a href="#" class="navbar-link">Masuk</a></p>
-        </div>
-        </div>
-        <div class="col-md-1"></div>
-      </div>
-    </div>
-  </nav>
-
+  <div navigation></div>
 
   <div class="container-fluid detail_container">
-
     <div class="row">
       <div class="col-md-1"></div>
-
-
-
       <div class="col-md-10 detail_content">
-
-
 
         <h2> Login Admin</h2>
 
-        <form>
+        <form ng-submit="loginSubmit()" ng-controller="mainCtrl">
           <div class="form-group">
-            <label for="nama">Username</label>
-            <input type="text" class="form-control" id="nama">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" ng-model="email">
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" ng-model="password">
           </div>
 
           <button type="submit" class="btn btn-default"> Login </button>
         </form>
 
-         </div><!-- end col-md-10-->
-
+        </div><!-- end col-md-10-->
     </div>
   </div>
 
-
-  <br><br>
-
-  <footer class="footer">
-      <p> Dibuat di Berlin, 2015 </p>
-  </footer>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
-   <script src="bootstrap/js/bootstrap.min.js"></script>
+  <div footer></div>
 </body>
 </html>
