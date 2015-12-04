@@ -1,7 +1,7 @@
 define([
     'angular', 'app', 'angular.ui-router', 'angular.materialize',
     './config',
-    './__common/app.common', './__common/app.common.req',
+    './_common/app.common', './_common/app.common.req',
     './home/app.home', './home/app.home.req'
 ], function (angular) {
 
@@ -11,7 +11,7 @@ define([
     ]);
 
     // first route to homepage
-    app.config(['$urlRouterProvider', '$locationProvider', function ($urlRouterProvider, $locationProvider) {console.log("OK");
+    app.config(['$urlRouterProvider', '$locationProvider', function ($urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true).hashPrefix('!');
         $urlRouterProvider.otherwise('/');
     }]);
