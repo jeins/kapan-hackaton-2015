@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <title>bangun Indonesia</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/bangun-main.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+    <nav class="bc_main">
+      <div class="row">
+        <div class="col s12 m10 push-s0 push-m1">
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">bangunIndonesia</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#">Proyek</a></li>
+              <li><a href="#">Profil</a></li>
+              <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
+              <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="#">Proyek</a></li>
+              <li><a href="#">Profil</a></li>
+              <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
+              <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+
+   <!-- Modal Login -->
+   <div id="modal-login" class="modal">
+     <div class="modal-content">
+       <h4>Login</h4>
+       <a class="waves-effect waves-light btn">Facebook</a>
+       <a class="waves-effect waves-light btn">Google</a>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Login</a>
+     </div>
+   </div>
+
+   <!-- Modal Daftar -->
+   <div id="modal-daftar" class="modal">
+     <div class="modal-content">
+       <h4>Daftar</h4>
+       <a class="waves-effect waves-light btn">Facebook</a>
+       <a class="waves-effect waves-light btn">Google</a>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Daftar</a>
+     </div>
+   </div>
+
+
+  <!-- <div navigation></div> -->
+
+  <div id="landing-container">
+    <div class="row">
+        <div class="col s12 m10 push-s0 push-m1">
+          <h1>Melalui data transparan dari pemerintah serta dukungan dan pengawasan rakyat, mari bersama membangun Indonesia. </h1>
+          <img src="asset/icon/scroll-down.png" alt="scroll down icon" class="scroll_down img-middle">
+        </div>
+    </div>
+  </div>
+
+  <div id="proyek_wrapper" ng-controller="mainCtrl">
+
+    <div class="row">
+        <div class="col s12 m10 push-s0 push-m1">
+          <a class="waves-effect waves-light btn bc_main"><i class="material-icons left">view_array</i>Kartu</a>
+          <a class="waves-effect waves-light btn bc_main"><i class="material-icons left">language</i>Peta</a>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m10 push-s0 push-m1 project_lists">
+
+          <div id="kartu_proyek">
+              <div ng-repeat="project in projects">
+
+                <div class="col s12 l4">
+
+                  <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="asset/monas.jpg" >
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">{{ project.nama }}<i class="material-icons right">more_vert</i></span>
+                      <p><a ng-href="detail.html#{{project.id}}">Lihat Detail</a></p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">{{ project.nama }}<i class="material-icons right">close</i></span>
+                      <p class="card-lokasi"><img src="asset/icon/lokasi.png" alt="" />Lokasi </p>
+                      <p>Oleh {{ project.profile_pemerintah.fullname }}</p>
+                      <p>{{ project.deskripsi }}</p>
+                    </div>
+                  </div>
+
+                </div>
+
+            </div> <!-- end ng-repeat -->
+          </div>
+
+          <div id="map"></div>
+      </div>
+    </div>
+
+  </div><!-- end proyek wrapper -->
+
+  <div footer></div>
+
+  <!--Import jQuery before materialize.js-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script type="text/javascript" src="js/custom-bangun.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/angular-materialize.js"></script>
+  <!-- Custom Angular JS Untuk Kapan -->
+  <script src="js/bangunConfig.js"></script>
+  <script src="js/bangunDirective.js"></script>
+  <script src="js/bangunService.js"></script>
+  <script src="js/bangunController.js"></script>
+
+
+  </body>
+</html>

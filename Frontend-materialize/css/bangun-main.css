@@ -1,0 +1,117 @@
+/*main background color*/
+.bc_main{ background-color: #eb362e !important; border-color: #eb362e; color:white; }
+
+#landing-container{
+  background-image: url('../asset/landing_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+h1{
+  margin-top: 0px;
+  font-size: 50px;
+  padding: 10% 0;
+}
+
+.img-middle{
+  margin: 0 auto;
+  display:
+  block;
+}
+
+img{
+  max-width: 100%;
+}
+
+.card-title{
+  line-height: 22px !important;
+}
+
+.project_lists.col, .detail_content, .profile_content{
+  padding: 0px !important;
+}
+
+.card-lokasi img{
+  width: 20px;
+}
+
+.scroll_down{ margin: 0 auto 10%; }
+.scroll_down:hover{ cursor: pointer; }
+
+/*-----------  Halaman Detail -----------------------*/
+.bangun_container{ margin-top: 30px; }
+.detail_preview_header > div{
+  padding-right: 0px;
+}
+
+.detail_preview_header{
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.dph_right{
+  height: 200px;
+  background-color: #eb362e;
+  color: white;
+  font-size: 25px;
+}
+
+.dph_right .judul_proyek{
+  font-size: 50px;
+  margin: 10px 0;
+  line-height: 45px;
+}
+
+.detail_left_box > div {
+  background-color: rgb(236, 232, 233);
+  padding: 10px 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  -o-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  font-size: 22px;
+}
+
+.data_pemilik img, .data_komentator img{ max-width: 40px; }
+ .data_vote img, .data_komentar img { max-width: 30px; }
+
+.data_pemilik p, .data_komentator p, .biodata_utama p{
+    margin-bottom: 0px;
+    margin-bottom: 5px;
+    line-height: 15px;
+    font-size: 15px;
+}
+
+.detail_right_box{
+  border:2px solid #eb362e;
+  color: #eb362e;
+}
+
+.each_box_komentar{
+  padding: 10px 0;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  -o-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+
+/*----------------------------------*/
+/*-------  smaller than 992 --------*/
+/*----------------------------------*/
+@media (max-width:992px){
+  .dph_right { font-size: 20px;}
+  .dph_right .judul_proyek{
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+/*----------------------------------*/
+/*-------  smaller than 750 --------*/
+/*----------------------------------*/
+@media (max-width:750px){
+  h1{ font-size: 25px;}
+  .detail_preview_header{ max-height: 1000px; }
+}

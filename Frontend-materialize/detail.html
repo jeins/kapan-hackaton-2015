@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <title>bangun Indonesia</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/bangun-main.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+    <nav class="bc_main">
+      <div class="row">
+        <div class="col s10 push-s0 push-m1">
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">bangunIndonesia</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#">Proyek</a></li>
+              <li><a href="#">Profil</a></li>
+              <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
+              <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="#">Proyek</a></li>
+              <li><a href="#">Profil</a></li>
+              <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
+              <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+
+   <!-- Modal Login -->
+   <div id="modal-login" class="modal">
+     <div class="modal-content">
+       <h4>Login</h4>
+       <a class="waves-effect waves-light btn">Facebook</a>
+       <a class="waves-effect waves-light btn">Google</a>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Login</a>
+     </div>
+   </div>
+
+   <!-- Modal Daftar -->
+   <div id="modal-daftar" class="modal">
+     <div class="modal-content">
+       <h4>Daftar</h4>
+       <a class="waves-effect waves-light btn">Facebook</a>
+       <a class="waves-effect waves-light btn">Google</a>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Daftar</a>
+     </div>
+   </div>
+
+  <!-- <div navigation></div> -->
+
+  <div class="bangun_container detail_container" ng-controller="detailCtrl">
+  <div class="row">
+
+    <div class="col s12 m10 push-s0 push-m1 detail_content">
+      <div class="row detail_preview_header">
+          <div class="col l5 m5 s12"><img src="asset/monas.jpg" alt="" /></div>
+          <div class="col l7 m7 s12 dph_right">
+            <div class="judul_proyek">  {{ project.nama }} </div>
+            <div class="lokasi_proyek"> DKI Jakarta </div>
+            <div class="status_proyek" ng-switch on="project.status_selesai">
+              <span ng-switch-when="0">Sedang Dikerjakan</span>
+              <span ng-switch-when="1">Rencana</span>
+              <span ng-switch-when="2">Berhenti</span>
+              <span ng-switch-when="3">Selesai</span>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col l4 s12 detail_left_box">
+            <div class="data_pemilik">
+              <div class="row">
+                <div class="col l3 s12"> <img src="asset/icon/user.png" alt="" /> </div>
+                <div class="col l9 s12">
+                  <a ng-href="profil.html#{{ project.profile_pemerintah_id }}"><p id="nama_pemilik"> Nama Orang </p></a>
+                  <p id="jabatan_pemilik"> Jabatan </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="data_biaya text-center"> Rp {{ project.biaya }}  </div>
+            <div class="data_waktu text-center"> 5 tahun  </div>
+
+            <div class="data_progress progress">
+                   <div class="determinate" style="width: 70%"></div>
+            </div>
+
+            <div class="data_vote "><img src="asset/icon/vote.png" alt="" /> 100 Vote  </div>
+            <div class="data_komentar "> <img src="asset/icon/komentar.png" alt="" /> 100 Komentar  </div>
+
+          </div>
+          <div class="col l8 s12 detail_right_box">
+            <h3> Apa itu {{ project.nama }}?</h3>
+            <p>{{ project.deskripsi }}</p>
+            <h3> Apa Manfaatnya?</h3>
+            <p>{{ project.outcome }}</p>
+          </div>
+       </div>
+
+         <br>
+         <!-- Kolom Komentar -->
+          <div class="row">
+
+            <div class="row">
+             <div class="col l6 s12 push-l6">
+               <p class="text-right"> Ada <span id="angka_komentar">20</span> Komentar untuk proyek ini &nbsp;&nbsp; <a class="waves-effect waves-light btn modal-komentar-trigger" href="#modal-komentar-detail">Tulis Komentar</a></p>
+             </div>
+            </div>
+
+            <div class="row each_box_komentar">
+              <div class="col l3 data_komentator">
+                <div class="row">
+                  <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
+                  <div class="col l9">
+                    <p class="nama_komentator"> Nama User </p>
+                    <p class="waktu_komentator"> 40 menit yang lalu</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col l9 isi_komentar">
+                Mantap gan proyeknya, semoga makin banyak yang kaya gini.
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <a class="waves-effect waves-light btn modal-komentar-trigger" style="width:100%" href="#modal-komentar-detail">Tulis Komentar</a>
+
+       </div><!-- end col-md-10-->
+
+  </div>
+</div> <!-- end detail wrapper-->
+
+
+  <!-- Modal Komentar -->
+  <div id="modal-komentar-detail" class="modal">
+    <div class="modal-content">
+      <h4>Komentar</h4>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <!-- Switch -->
+            <div class="switch">
+              <label>
+                Positif
+                <input type="checkbox">
+                <span class="lever"></span>
+                Negatif
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <label for="textarea1">Textarea</label>
+          </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Post Komentar</a>
+    </div>
+  </div>
+
+  <div footer></div>
+
+  <!--Import jQuery before materialize.js-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script type="text/javascript" src="js/custom-bangun.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/angular-materialize.js"></script>
+  <!-- Custom Angular JS Untuk Kapan -->
+  <script src="js/bangunConfig.js"></script>
+  <script src="js/bangunDirective.js"></script>
+  <script src="js/bangunService.js"></script>
+  <script src="js/bangunController.js"></script>
+
+
+  </body>
+</html>
