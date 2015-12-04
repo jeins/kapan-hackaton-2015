@@ -1,0 +1,11 @@
+## Directory-based project format:
+.idea/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+## remove KapanFrontend Library
+KapanFrontend/lib
+
+## remove KapanBackend Library
+KapanBackend/vendor

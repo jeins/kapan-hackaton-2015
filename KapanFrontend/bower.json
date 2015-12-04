@@ -1,0 +1,22 @@
+{
+  "name": "KapanFrontend",
+  "version": "1.0.0",
+  "description": "web-app platform KAPAN",
+  "dependencies" : {
+    "requirejs": "*",
+    "satellizer": "0.13.1",
+    "jquery": "2.1.4",
+    "hammerjs": "2.0.4",
+
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+
+    "angular-materialize": "*",
+    "materialize": "0.97.*",
+
+    "leaflet": "0.7.*",
+    "leaflet.markercluster": "0.4.0",
+    "leaflet-plugins": "1.3.*",
+    "angular-leaflet-directive": "0.8.6"
+  }
+}
