@@ -37,6 +37,8 @@ $app->group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers', 'middle
     $app->post('project', 'ProjectInfoController@addNewProject');
 
     $app->put('project/{id}', 'ProjectInfoController@updateProject');
+
+    $app->put('progress/{id}', 'ProjectProgressController@updateProjectProgress');
 });
 
 // ===============================================
