@@ -17,7 +17,44 @@
                 <li class="tab col s3"><a href="#komentar2">Komentar dengan Media</a></li>
             </ul>
         </div>
-        <div id="komentar1" class="col s12">Test 1</div>
+
+        <div id="komentar1" class="col s12" ng-repeat="k in komentar">
+            <div class="row each_box_komentar">
+                <div class="col l3 data_komentator">
+                    <div class="row">
+                        <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
+                        <div class="col l9">
+                            <p class="nama_komentator"> {{k.profile_rakyat[0].fullname}} </p>
+                            <p class="waktu_komentator"> 40 menit yang lalu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col l9 isi_komentar">
+                    {{k.post}}
+                    <p class="btn-addkomentar"><a tooltipped class="btn-floating red" data-position="top" data-tooltip="Tambah Komentar"><i class="material-icons">add</i></a></p>
+                </div>
+
+                <div class="row each_box_komentar" ng-if="k.comments" ng-repeat="k_c in k.comments">
+                    <div>
+                        <div class="col l3 data_komentator">
+                            <div class="row">
+                                <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
+                                <div class="col l9">
+                                    <p class="nama_komentator"> {{k_c.profile_rakyat.fullname}} </p>
+                                    <p class="waktu_komentator"> 40 menit yang lalu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col l9 isi_komentar">
+                            {{k_c.comment}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="komentar2" class="col s12">Test 2</div>
     </div>
 

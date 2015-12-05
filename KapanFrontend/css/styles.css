@@ -115,3 +115,8 @@ img{
     h1{ font-size: 25px;}
     .detail_preview_header{ max-height: 1000px; }
 }
+
+.btn-addkomentar{
+    position: absolute;
+    right: 20px;
+}

@@ -6,7 +6,7 @@ define(['../app.home'], function(app){
     var controller = function($scope, SvcKomentar, $stateParams){
         $scope.komentar = {};
 
-        SvcKomentar.getKomentar($stateParams.id, function(result){
+        SvcKomentar.getKomentar($stateParams.id, function(result){console.log(result);
             $scope.komentar = result;
         });
     };
