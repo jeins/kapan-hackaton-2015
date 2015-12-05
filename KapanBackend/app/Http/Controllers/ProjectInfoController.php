@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\ProjectInfo;
 use App\Models\ProfilePemerintah;
 use App\Models\PostComment;
+use App\Models\ProfileRakyat;
 use Illuminate\Http\Request;
 
 class ProjectInfoController extends Controller
@@ -107,6 +108,9 @@ class ProjectInfoController extends Controller
 
         $index = 0;
         foreach ($posts as $post) {
+            $profileRakyat = ProfileRakyat::where('id', '=', $post['profile_rakyat_id'])->get()->toArray();
+            $posts[$index] = array_merge($posts[$index], ['profile_rakyat' => $profileRakyat]);
+            
             $comments = PostComment::where('project_posts_id', '=', $post['id'])->with('profileRakyat')->get()->toArray();
             if(sizeof($comments) > 0){
                 $posts[$index] = array_merge($posts[$index], ['comments' => $comments]);
