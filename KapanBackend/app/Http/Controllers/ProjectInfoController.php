@@ -96,6 +96,10 @@ class ProjectInfoController extends Controller
         return response()->json(['error' => true, 'errmsg' => 'tidak berwenang merubah project dari pemerintah lainnya']);
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getProjectInfoComments($id){
         $project = ProjectInfo::find($id);
 
@@ -103,7 +107,7 @@ class ProjectInfoController extends Controller
 
         $index = 0;
         foreach ($posts as $post) {
-            $comments = PostComment::where('project_posts_id', '=', $post['id'])->get()->toArray();
+            $comments = PostComment::where('project_posts_id', '=', $post['id'])->with('profileRakyat')->get()->toArray();
             if(sizeof($comments) > 0){
                 $posts[$index] = array_merge($posts[$index], ['comments' => $comments]);
             }
