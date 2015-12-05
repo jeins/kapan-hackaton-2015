@@ -1,3 +1,5 @@
 define([
-    './controllers/CtrlHome',
+    './controllers/CtrlProject',
+
+    './services/SvcProject'
 ], function(){});

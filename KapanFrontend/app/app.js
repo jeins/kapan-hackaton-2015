@@ -12,7 +12,7 @@ define([
 
     // first route to homepage
     app.config(['$urlRouterProvider', '$locationProvider', function ($urlRouterProvider, $locationProvider) {
-        $locationProvider.html5Mode(true).hashPrefix('!');
+        $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
     }]);
 

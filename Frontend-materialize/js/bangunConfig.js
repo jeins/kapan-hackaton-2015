@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------------
 
 var bangunApp = angular.module('App', ['ngRoute','ngResource', 'ui.materialize']);
-var _URL = "http://localhost:9999";
+var _URL = "http://kapan.127.0.0.1.xip.io";
 
 // use the HTML5 History API
 bangunApp.config(function($routeProvider, $locationProvider) {

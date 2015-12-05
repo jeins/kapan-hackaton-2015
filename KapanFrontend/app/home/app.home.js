@@ -9,8 +9,13 @@ define(['angular'], function (angular) {
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'app/home/templates/home.html',
-                    controller: 'CtrlHome as CHome'
+                    templateUrl: 'app/home/templates/project_home_page.html',
+                    controller: 'CtrlProject as CHome'
+                })
+                .state('homes', {
+                    url: '/homes',
+                    templateUrl: 'app/home/templates/Tes.html',
+                    controller: 'CtrlMap as CMap'
                 })
         }
     ]);
