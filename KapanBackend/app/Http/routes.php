@@ -73,4 +73,6 @@ $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers'], function
     $app->get('project/pemerintah/{id}', 'ProjectInfoController@getProjectByPemerintah');
 
     $app->get('project/{id}/post', 'ProjectInfoController@getProjectInfoComments');
+
+    $app->get('progress/{id}', 'ProjectProgressController@getProjectProgressByProjectId');
 });
