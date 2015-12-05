@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\ProjectInfo;
 use App\Models\ProfilePemerintah;
 use App\Models\PostComment;
+use App\Models\ProfileRakyat;
 use Illuminate\Http\Request;
 
 class ProjectInfoController extends Controller
@@ -96,6 +97,10 @@ class ProjectInfoController extends Controller
         return response()->json(['error' => true, 'errmsg' => 'tidak berwenang merubah project dari pemerintah lainnya']);
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getProjectInfoComments($id){
         $project = ProjectInfo::find($id);
 
@@ -103,7 +108,10 @@ class ProjectInfoController extends Controller
 
         $index = 0;
         foreach ($posts as $post) {
-            $comments = PostComment::where('project_posts_id', '=', $post['id'])->get()->toArray();
+            $profileRakyat = ProfileRakyat::where('id', '=', $post['profile_rakyat_id'])->get()->toArray();
+            $posts[$index] = array_merge($posts[$index], ['profile_rakyat' => $profileRakyat]);
+            
+            $comments = PostComment::where('project_posts_id', '=', $post['id'])->with('profileRakyat')->get()->toArray();
             if(sizeof($comments) > 0){
                 $posts[$index] = array_merge($posts[$index], ['comments' => $comments]);
             }
