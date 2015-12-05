@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call('ProfileRakyatSeeder');
         $this->call('ProjectPostSeeder');
         $this->call('PostCommentsSeeder');
+        $this->call('ProjectProgressSeeder');
 
         Model::reguard();
     }
