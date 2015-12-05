@@ -16,7 +16,7 @@ class AuthController extends Controller
 {
     private $token_secret = 'TOKENSECRETKEY!!!';
     private $googleSecret = '4e0pgAua3fsifLKvy-r30KsK';
-    private $facebookSecret = '';
+    private $facebookSecret = 'd361d6f8fbc8560fc49521dc2df3cfe8';
 
     /**
      * generate token
@@ -195,6 +195,12 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * login with facebook oauth2
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function facebookOAuth(Request $request){
         $accessTokenUrl = 'https://graph.facebook.com/v2.3/oauth/access_token';
         $graphApiUrl = 'https://graph.facebook.com/v2.3/me';

@@ -16,15 +16,23 @@ define([
         $urlRouterProvider.otherwise('/');
     }]);
 
-    app.config([
-        '$authProvider', function($authProvider){
-            $authProvider.loginUrl = 'http://kapan.127.0.0.1.xip.io/auth/login';
-            $authProvider.signupUrl = 'http://kapan.127.0.0.1.xip.io/auth/signup';
+    app.config(['$authProvider', 'CONFIG', function($authProvider, CONFIG){console.log(CONFIG);
+            $authProvider.loginUrl = CONFIG.http.host + '/auth/login';
+            $authProvider.signupUrl = CONFIG.http.host + '/auth/signup';
+
             $authProvider.google({
                 name: 'google',
                 clientId: '735966287704-d97heeq4ouke1oj0ohi38cjc3i0hijh5.apps.googleusercontent.com',
-                url: 'http://kapan.127.0.0.1.xip.io/auth/rakyat/google',
-                redirectUri: 'http://kapan.127.0.0.1.xip.io/'
+                url: CONFIG.http.host + '/auth/rakyat/google',
+                redirectUri: CONFIG.http.redirectUri
+            });
+
+
+            $authProvider.facebook({
+                'name': 'facebook',
+                clientId: '423629411165045',
+                url: CONFIG.http.host + '/auth/rakyat/facebook',
+                redirectUri: CONFIG.http.redirectUri
             });
     }]);
 
