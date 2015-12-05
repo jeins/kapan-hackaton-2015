@@ -7,13 +7,14 @@ bangunApp.service('bangunService', function($http, $location, $q){
     $http.get(_URL + '/api/projects').then(callback)
   };
 
-  var hash_projectId = $location.hash();
+  var hash_url = $location.hash();
+
   this.getProjectDetail = function(callback){
-    $http.get(_URL + '/api/project/' + hash_projectId).then(callback)
+    $http.get(_URL + '/api/project/' + hash_url).then(callback)
   };
 
   this.getProfile = function(callback){
-    $http.get(_URL + '/api/profile/' + hash_projectId).then(callback)
+    $http.get(_URL + '/api/profile/' + hash_url).then(callback)
   };
 
   this.getProjectEach = function(callback){

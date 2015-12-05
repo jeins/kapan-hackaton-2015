@@ -40,8 +40,26 @@
    <div id="modal-login" class="modal">
      <div class="modal-content">
        <h4>Login</h4>
+
+       <p> Login Dengan sosial media </p>
        <a class="waves-effect waves-light btn">Facebook</a>
        <a class="waves-effect waves-light btn">Google</a>
+
+       <p> Login Dengan Email </p>
+       <form class="col s12" ng-submit="loginSubmit()" ng-controller="rakyatAuthCtrl">
+         <div class="row">
+             <input type="email" name="email" id="email" class="validate" ng-model="email">
+             <label for="email">Email</label>
+         </div>
+
+         <div class="row">
+             <input type="password" name="password" id="password" class="validate" ng-model="password">
+             <label for="password">Password</label>
+         </div>
+
+         <button class="waves-effect waves-light btn" type="submit">Login</a>
+       </form>
+
      </div>
      <div class="modal-footer">
        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Login</a>
@@ -52,11 +70,32 @@
    <div id="modal-daftar" class="modal">
      <div class="modal-content">
        <h4>Daftar</h4>
-       <a class="waves-effect waves-light btn">Facebook</a>
-       <a class="waves-effect waves-light btn">Google</a>
-     </div>
-     <div class="modal-footer">
-       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Daftar</a>
+
+          <p> Daftar Dengan sosial media </p>
+          <a class="waves-effect waves-light btn">Facebook</a>
+          <a class="waves-effect waves-light btn">Google</a>
+
+          <p> Daftar Dengan Email </p>
+
+           <form class="col s12" ng-submit="registerSubmit()" ng-controller="rakyatAuthCtrl">
+             <div class="row">
+                 <input type="text" name="fullname" id="fullname" class="validate" ng-model="fullname">
+                 <label for="fullname">Nama Lengkap</label>
+             </div>
+
+             <div class="row">
+                 <input type="email" name="email" id="email" class="validate" ng-model="email">
+                 <label for="email">Email</label>
+             </div>
+
+             <div class="row">
+                 <input type="password" name="password" id="password" class="validate" ng-model="password">
+                 <label for="password">Password</label>
+             </div>
+
+             <button class="waves-effect waves-light btn" type="submit">Daftar</a>
+           </form>
+
      </div>
    </div>
 

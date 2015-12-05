@@ -112,7 +112,79 @@
                       </div>
                     </div>
 
-                    <a class="waves-effect waves-light btn" href="#">Edit proyek</a>
+                    <a class="waves-effect waves-light btn modal-updateProyek-trigger" href="#modal-updateProyek" modal>Edit proyek</a>
+
+                    <!-- ___________________________ Modal Update per Proyek ______________________________ -->
+                    <!-- ______________________  Belum per id, masih ngambil info yang terahir_____________ -->
+                    <div id="modal-updateProyek" class="modal" ng-controller="proyekBaruCtrl">
+                      <div class="modal-content">
+
+                        <div class="row">
+                          <form class="col s12" ng-submit="updateProyek()">
+
+                            Update Proyek
+
+                             <div class="row" input-field>
+                                 <input type="text" name="judul" id="judul" class="validate" value="{{ project.nama }}" ng-model="judul_proyek">
+                                 <label for="judul">Judul Proyek</label>
+                             </div>
+
+                             <div class="row" input-field>
+                                 <textarea id="textarea1" class="materialize-textarea" name="deskripsi" ng-model="desc_proyek"></textarea>
+                                 <label for="deskripsi">Deskripsi</label>
+                             </div>
+
+                             <div class="file-field input-field" input-field>
+                              <div class="btn">
+                                <span>File</span>
+                                <input type="file" ng-model="file_proyek">
+                              </div>
+                              <div class="file-path-wrapper" input-field>
+                                <input class="file-path validate" type="text">
+                              </div>
+                            </div>
+
+                            <label>Status Proyek</label>
+                            <select class="browser-default" ng-model="status_proyek">
+                              <option value="" disabled selected>Pilih status</option>
+                              <option value="1">Rencana</option>
+                              <option value="2">Berjalan</option>
+                              <option value="3">Berhasil</option>
+                              <option value="4">Berhenti</option>
+                            </select>
+
+
+                            <div class="row">
+                              <div class="col s6">
+                                <input type="date" class="datepicker" name="waktu_target" ng-model="targetWaktu_proyek">
+                                <label for="waktu_target">Jadwal Selesai</label>
+                              </div>
+
+                              <div class="col s6">
+                                <input type="text" name="biaya" placeholder="50000000" id="biaya" class="validate" ng-model="biaya_proyek">
+                                <label for="biaya">Biaya Proyek</label>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                                <textarea id="outcome" class="materialize-textarea" name="outcome_text" ng-model="outcome_proyek"></textarea>
+                                <label for="outcome_text">Outcome yang diinginkan</label>
+                            </div>
+
+                            <p class="range-field">
+                              <input type="range" id="progress" name="progress" min="0" max="100" />
+                              <label for="progress">Progress (skala 1-100)</label>
+                            </p>
+
+                            <button class="waves-effect waves-light btn" type="submit">Submit Proyek</a>
+
+                           </form>
+                        </div>
+
+
+                      </div>
+                    </div>
+                    <!-- __________________end Modal Update Proyek_____________________ -->
 
                   </div>
 
@@ -122,7 +194,7 @@
             <div id="map"></div>
 
             <!-- _______________________________________________________________________________________________ -->
-            <!-- __________________________________ Tab Profil Content____________________________________>
+            <!-- __________________________________ Tab Profil Content__________________________________________ -->
             <!-- _______________________________________________________________________________________________ -->
             <div id="dashboard_profil" ng-controller="profilCtrl">
               <div class="row">
@@ -149,8 +221,41 @@
                </div>
 
               <div class="row">
-                 <button type="button" class="waves-effect waves-light btn" style="width:100%">Edit Profil</button>
+                 <a class="waves-effect waves-light btn modal-updateProfile-trigger" style="width:100%" href="#modal-updateProfile" modal>Edit Profile</a>
               </div>
+
+              <!-- ______________________  Modal update profile ____________ -->
+              <div id="modal-updateProfile" class="modal">
+                <div class="modal-content">
+                  <div class="row">
+                    Update Profile
+                    <form class="col s12" ng-submit="updateSubmit()" ng-controller="dashboardCtrl">
+                      <div class="row" input-field>
+                          <input type="text" name="fullname" id="fullname" class="validate" value="{{profil_infos.fullname}}" ng-model="fullname">
+                          <label for="fullname">Nama Lengkap</label>
+                      </div>
+
+                      <div class="row" input-field>
+                          <input type="text" name="jabatan" id="jabatan" class="validate" value="{{profil_infos.fullname}}" ng-model="jabatan">
+                          <label for="jabatan">Jabatan</label>
+                      </div>
+
+                      <div class="row" input-field>
+                          <input type="email" name="email" id="email" class="validate" ng-model="email" value="">
+                          <label for="email">Email</label>
+                      </div>
+
+                      <div class="row" input-field>
+                          <input type="password" name="password" id="password" class="validate" ng-model="password">
+                          <label for="password">Password</label>
+                      </div>
+
+                      <button class="waves-effect waves-light btn" type="submit">Update</a>
+                    </form>
+
+                </div>
+              </div>
+
             </div> <!-- end dashboard_profil -->
 
 
@@ -204,9 +309,14 @@
                   </div>
 
                   <div class="row">
-                      <textarea id="textarea1" class="materialize-textarea" name="outcome_text" ng-model="outcome_proyek"></textarea>
+                      <textarea id="outcome" class="materialize-textarea" name="outcome_text" ng-model="outcome_proyek"></textarea>
                       <label for="outcome_text">Outcome yang diinginkan</label>
                   </div>
+
+                  <p class="range-field">
+                    <input type="range" id="progress" name="progress" min="0" max="100" />
+                    <label for="progress">Progress (skala 1-100)</label>
+                  </p>
 
                   <button class="waves-effect waves-light btn" type="submit">Submit Proyek</a>
 

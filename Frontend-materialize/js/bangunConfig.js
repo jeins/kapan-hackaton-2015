@@ -2,7 +2,7 @@
 //------------------------ Angular JS Untuk BangunIndonesiaApp !! ------------------------------------
 //---------------------------------------------------------------------------------------------------
 
-var bangunApp = angular.module('App', ['ngRoute','ngResource']);
+var bangunApp = angular.module('App', ['ngRoute','ngResource', 'ui.materialize']);
 var _URL = "http://localhost:9999";
 
 // use the HTML5 History API

@@ -50,6 +50,9 @@ bangunApp.controller('profilCtrl', function($scope, bangunService, $http, $locat
           $scope.profil_infos.totalProyek = totalProyek;
     });
 
+
+
+
 });
 
 
@@ -71,10 +74,65 @@ bangunApp.controller('detailCtrl', function($scope, bangunService, $http, $locat
       });
   });
 
+  $scope.submitKomentar = function(){
+
+    var inputData = {
+      komentar: this.komentar_text,
+      like: this.komentar_like_toggle,
+      media:this.komentar_media,
+      media_text:this.komentar_media_text
+    };
+
+    console.log(inputData);
+  }
+
+});
+
+
+//---------------------------------------------------------------------------------------------------
+//--------------------- Auth Rakyat Controller -----------------------------------------------------
+//---------------------------------------------------------------------------------------------------
+bangunApp.controller('rakyatAuthCtrl', function($scope, bangunService, $http, $location){
+
+  //--------------- login rakyat ----------------------------------
+  $scope.loginSubmit = function(){
+      // console.log(this.username);
+      var inputData = {
+        email: this.email,
+        password: this.password
+      };
+
+      $http.post(_URL + '/auth/rakyat/login', inputData)
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function(data){
+        console.log("error login!");
+      });
+  };
+
+  //--------------- register rakyat ----------------------------------
+  $scope.registerSubmit = function(){
+      // console.log(this.username);
+      var inputData = {
+        fullname: this.fullname,
+        email: this.email,
+        password: this.password
+      };
+
+      $http.post(_URL + '/auth/rakyat/signup', inputData)
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function(data){
+        console.log("error signup!");
+      });
+  };
+
 });
 
 //---------------------------------------------------------------------------------------------------
-//--------------------- Login Dashboard Controller -------------------------------------------------
+//--------------------- Auth Pemerintah Dashboard Controller ---------------------------------------
 //---------------------------------------------------------------------------------------------------
 bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $location){
 
@@ -114,6 +172,28 @@ bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $lo
       });
   };
 
+  //--------------- update profile Pemerintah --------------------------------
+  $scope.updateSubmit = function(){
+
+      // console.log(this.username);
+      var inputData = {
+        fullname: this.fullname,
+        jabatan: this.jabatan,
+        email: this.email,
+        password: this.password
+      };
+
+      console.log(inputData);
+
+      $http.put(_URL + '/auth/profile', inputData)
+      .success(function(data) {
+        console.log(data.token);
+      })
+      .error(function(data){
+        console.log("cannot update profile!");
+      });
+  };
+
 });
 
 //---------------------------------------------------------------------------------------------------
@@ -130,10 +210,10 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
         jenis: this.jenis_proyek,
         deskripsi: this.desc_proyek,
         file: this.file_proyek,
-        lokasi: this.lokasi,
+        lokasi: this.lokasi_proyek,
         status_selesai: this.status_proyek,
-        biaya: this.biaya,
-        outcome: this.outcome,
+        biaya: this.biaya_proyek,
+        outcome: this.outcome_proyek,
         jadwal_terealisasi: this.targetWaktu_proyek
       };
 
@@ -147,7 +227,7 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
   };
 
   //--------------- edit proyek lama ----------------------------------
-  $scope.submitEditProyek = function(){
+  $scope.updateProyek = function(){
 
       var hash_proyek_id = $location.hash();
 
@@ -159,12 +239,14 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
         jenis: this.jenis_proyek,
         deskripsi: this.desc_proyek,
         file: this.file_proyek,
-        lokasi: this.lokasi,
+        lokasi: this.lokasi_proyek,
         status_selesai: this.status_proyek,
-        biaya: this.biaya,
-        outcome: this.outcome,
+        biaya: this.biaya_proyek,
+        outcome: this.outcome_proyek,
         jadwal_terealisasi: this.targetWaktu_proyek
       };
+
+      console.log(inputData);
 
       $http.put(_URL + '/admin/project', inputData)
       .success(function(data) {
