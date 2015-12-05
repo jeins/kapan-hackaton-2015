@@ -10,12 +10,12 @@ define(['angular'], function (angular) {
                 .state('home', {
                     url: '/',
                     templateUrl: 'app/home/templates/project_home_page.html',
-                    controller: 'CtrlProject as CHome'
+                    controller: 'CtrlProject as CProject'
                 })
-                .state('homes', {
-                    url: '/homes',
-                    templateUrl: 'app/home/templates/Tes.html',
-                    controller: 'CtrlMap as CMap'
+                .state('projectDetail', {
+                    url: '/project/:id',
+                    templateUrl: 'app/home/templates/project_detail.html',
+                    controller: 'CtrlProject as CProject'
                 })
         }
     ]);

@@ -1,5 +1,5 @@
 define([
-    'angular', 'app', 'angular.ui-router', 'angular.materialize',
+    'angular', 'app', 'angular.ui-router', 'angular.materialize', 'jquery', 'materialize',
     './config',
     './_common/app.common', './_common/app.common.req',
     './home/app.home', './home/app.home.req'
