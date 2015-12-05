@@ -1,3 +1,4 @@
 define([
-    './controllers/CtrlMain'
+    './controllers/CtrlMain',
+    './controllers/CtrlAuth'
 ], function(){});

@@ -11,7 +11,7 @@ require.config({
         'leaflet': '../lib/leaflet/dist/leaflet',
         'leaflet.plugins': '../lib/leaflet-plugins/layer/tile/Google',
         'leaflet.markercluster': '../lib/leaflet.markercluster/dist/leaflet.markercluster',
-        'satellizer': '../lib/satellizer/satellizer.min',
+        'satellizer': '../lib/satellizer/satellizer',
         'hammerjs': '../lib/hammerjs/hammer.min'
     },
     shim: {
@@ -20,6 +20,7 @@ require.config({
         'leaflet': {exports: 'leaflet'},
         'hammerjs': {exports: 'hammerjs'},
         'angular.ui-router': {deps: ['angular']},
+        'satellizer': {deps: ['angular']},
         'materialize': {deps: ['jquery']},
         'angular.materialize': {deps: ['angular']},
         'leaflet.plugins': {deps: ['leaflet']},
