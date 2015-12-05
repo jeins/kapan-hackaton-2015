@@ -14,6 +14,22 @@ class ProjectProgressController extends Controller
           $progress = $project->projectProgress->toArray();
           return response()->json($progress);
         }
-        return response()->json(['error' => true, 'errmsg' => 'no project with this id']);
+        return response()->json(['error' => true, 'errmsg' => 'tidak ada progress untuk proyek id ini']);
+    }
+
+    public function updateProjectProgress(Request $request, $id){
+        $project = ProjectInfo::find($id);
+
+        if($request->input('profile_pemerintah_id') == $project->profile_pemerintah_id){
+          $progress = ProjectProgress::where('project_info_id', '=', $id)->first();
+          $progress->description = $request->input('description');
+          $progress->angka_progress = $request->input('angka_progress');
+          $progress->tanggal_update = date("Y-m-d H:i:s");
+
+          $progress->save();
+
+          return response()->json($progress);
+        }
+        return response()->json(['error' => true, 'errmsg' => 'tidak berwenang merubah project progress dari pemerintah lainnya']);
     }
 }

@@ -121,20 +121,19 @@
             <div class="row">
              <div class="col l5 s12 push-l7">
                <p class="text-right"> Ada <span id="angka_komentar">20</span> Komentar untuk proyek ini </p>
-               <a class="waves-effect waves-light btn modal-komentar-trigger light-blue darken-1" href="#modal-komentar-detail">Nilai Positif</a>
-               <a class="waves-effect waves-light btn modal-komentar-negatif-trigger red lighten-1" href="#modal-komentar-negatif-detail">Nilai Negatif</a>
+               <a class="waves-effect waves-light btn modal-komentar-positif-trigger light-blue darken-1" href="#modal-komentar-positif-detail">Nilai Positif</a>
+               <a class="waves-effect waves-light btn modal-komentar-trigger red lighten-1" href="#modal-komentar-detail">Nilai Negatif</a>
              </div>
             </div>
 
             <div class="row">
-              <ul class="tabs">
+              <ul class="tabs" tabs>
                 <li class="tab col s3"><a class="active" href="#komentar_lists">Komentar</a></li>
                 <li class="tab col s3"><a href="#komentar_media_lists">Komentar dengan media</a></li>
               </ul>
             </div>
 
             <div id="komentar_lists">
-
               <div class="row each_box_komentar">
                 <div class="col l3 data_komentator">
                   <div class="row">
@@ -149,14 +148,12 @@
                 <div class="col l9 isi_komentar">
                   Mantap gan proyeknya, semoga makin banyak yang kaya gini.
 
-                  <p><a class="waves-effect waves-light btn teal lighten-3 modal-balas-komentar-trigger" href="#modal-balas-komentar" modal>balas komentar</a></p>
+                  <p><a class="waves-effect waves-light btn teal lighten-3 modal-balas-komentar-trigger" href="#modal-balas-komentar">balas komentar</a></p>
                 </div>
               </div>
-
             </div><!-- end tab komentar list -->
 
             <div id="komentar_media_lists">
-
               <div class="row each_box_komentar">
                 <div class="col l3 data_komentator">
                   <div class="row">
@@ -171,16 +168,14 @@
                 <div class="col l9 isi_komentar">
                    Bukti keras nih gan!
                    <img materialboxed class="materialboxed responsive-img" src="asset/Suramadu_Bridge_1.JPG">
-                   <p><a class="waves-effect waves-light btn modal-komentar-trigger teal lighten-3" href="#modal-balas-komentar" modal>balas komentar</a></p>
+                   <p><a class="waves-effect waves-light btn modal-komentar-trigger teal lighten-3" href="#modal-balas-komentar">balas komentar</a></p>
                 </div>
               </div>
-
             </div><!-- end tab komentar_media_lists list -->
 
-          </div>
+          </div><!-- end kolom komentar -->
 
-          <br>
-          <a class="waves-effect waves-light btn modal-komentar-trigger" style="width:100%" href="#modal-komentar-detail" modal>Tulis Komentar</a>
+          <br><a class="waves-effect waves-light btn modal-komentar-trigger" style="width:100%" href="#modal-komentar-detail" >Tulis Komentar</a>
 
        </div><!-- end col-md-10-->
 
@@ -198,10 +193,10 @@
                              <!-- Switch -->
                              <div class="switch">
                                <label>
-                                Positif
+                                Negatif
                                  <input type="checkbox" name="like_toggle" ng-model="komentar_like_toggle">
                                  <span class="lever"></span>
-                                 Negatif
+                                 Positif
                                </label>
                              </div>
                            </div>
@@ -230,24 +225,25 @@
                    </div>
                    <!-- End Modal Komentar -->
 
-                   <!-- Modal Komentar Proyek Negatif-->
-                   <div id="modal-komentar-negatif-detail" class="modal">
+                   <!-- Modal Komentar Proyek positif-->
+                   <div id="modal-komentar-positif-detail" class="modal">
                      <div class="modal-content">
                        <h4>Komentar</h4>
 
                        <div class="row">
 
-                         <form class="col s12" ng-submit="submitKomentar()">
+                         <form class="col s12" ng-submit="submitKomentarPositif()">
                            <div class="row">
                              <!-- Switch -->
                              <div class="switch">
                                <label>
-                                 Positif
-                                 <input checked type="checkbox" name="like_toggle" ng-model="komentar_like_toggle">
-                                 <span class="lever"></span>
                                  Negatif
+                                 <input disabled type="checkbox" name="like_toggle" id="checkbox_auto_positif" ng-model="komentar_like_toggle">
+                                 <span class="lever"></span>
+                                 Positif
                                </label>
                              </div>
+
                            </div>
                            <div class="row">
                              <div class="input-field col s12">
