@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProjectProgressController extends Controller
 {
+    /**
+     * get specific project progress by project id
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getProjectProgressByProjectId($id){
         $project = ProjectInfo::find($id);
 
@@ -17,6 +22,13 @@ class ProjectProgressController extends Controller
         return response()->json(['error' => true, 'errmsg' => 'tidak ada progress untuk proyek id ini']);
     }
 
+    /**
+     * update selected project progress
+     * @request PUT
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function updateProjectProgress(Request $request, $id){
         $project = ProjectInfo::find($id);
 
