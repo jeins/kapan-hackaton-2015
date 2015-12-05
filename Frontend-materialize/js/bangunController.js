@@ -134,7 +134,12 @@ bangunApp.controller('rakyatAuthCtrl', function($scope, bangunService, $http, $l
 //---------------------------------------------------------------------------------------------------
 //--------------------- Auth Pemerintah Dashboard Controller ---------------------------------------
 //---------------------------------------------------------------------------------------------------
-bangunApp.controller('dashboardCtrl', function($scope, bangunService, $http, $location){
+bangunApp.controller('adminCtrl', function($scope, bangunService, $http, $location){
+
+  //--------------- List Pemerintah Pemerintah -------------------------
+  bangunService.getProfiles(function(response){
+        $scope.profiles = response.data;
+  });
 
   //--------------- login Pemerintah ----------------------------------
   $scope.loginSubmit = function(){
@@ -214,6 +219,8 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
         status_selesai: this.status_proyek,
         biaya: this.biaya_proyek,
         outcome: this.outcome_proyek,
+        progress: this.progress_proyek,
+        progress_desc: this.progress_desc_proyek,
         jadwal_terealisasi: this.targetWaktu_proyek
       };
 
@@ -243,6 +250,8 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
         status_selesai: this.status_proyek,
         biaya: this.biaya_proyek,
         outcome: this.outcome_proyek,
+        progress: this.progress_proyek,
+        progress_desc: this.progress_desc_proyek,
         jadwal_terealisasi: this.targetWaktu_proyek
       };
 
@@ -254,6 +263,77 @@ bangunApp.controller('proyekBaruCtrl', function($scope, bangunService, $http, $l
       })
       .error(function(data){
         console.log("error edit proyek");
+      });
+  };
+
+});
+
+
+//---------------------------------------------------------------------------------------------------
+//--------------------- Auth Super Admin Dashboard Controller ---------------------------------------
+//---------------------------------------------------------------------------------------------------
+bangunApp.controller('superAdminCtrl', function($scope, bangunService, $http, $location){
+
+  //--------------- login Super Admin ----------------------------------
+  $scope.loginSubmit = function(){
+      // console.log(this.username);
+      var inputData = {
+        email: this.email,
+        password: this.password
+      };
+
+      $http.post(_URL + '/auth/admin/login', inputData)
+      .success(function(data) {
+        console.log(data.token);
+      })
+      .error(function(data){
+        console.log("cannot login!");
+      });
+  };
+
+
+  //--------------- //--------------- //--------------- //--------------- //-----------------------------------------
+  //--------------- register dan update Super Admin beluma ada sebenarnya di view ----------------------------------
+  //--------------- //--------------- //--------------- //--------------- //-----------------------------------------
+
+  //--------------- register Super Admin ----------------------------------
+  $scope.registerSubmit = function(){
+      // console.log(this.username);
+      var inputData = {
+        fullname: this.fullname,
+        jabatan: this.jabatan,
+        email: this.email,
+        password: this.password
+      };
+
+      $http.post(_URL + '/auth/admin/signup', inputData)
+      .success(function(data) {
+        console.log(data.token);
+      })
+      .error(function(data){
+        console.log("cannot signup!");
+      });
+  };
+
+  //--------------- update profile Super Admin --------------------------------
+  $scope.updateSubmit = function(){
+
+      // console.log(this.username);
+      var inputData = {
+        fullname: this.fullname,
+        jabatan: this.jabatan,
+        email: this.email,
+        password: this.password
+      };
+
+      console.log(inputData);
+
+      $http.put(_URL + '/auth/profile', inputData)
+      .success(function(data) {
+        console.log(data.token);
+      })
+      .error(function(data){
+        console.log("cannot update profile!");
       });
   };
 

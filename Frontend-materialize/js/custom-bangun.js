@@ -12,9 +12,12 @@ $(document).ready(function(){
   $('.modal-login-trigger').leanModal();
   $('.modal-daftar-trigger').leanModal();
   $('.modal-komentar-trigger').leanModal();
+  $('.modal-komentar-negatif-trigger').leanModal();
+  $('.modal-balas-komentar-trigger').leanModal();
 
   $('.modal-updateProyek-trigger').leanModal();
   $('.modal-updateProfile-trigger').leanModal();
+
 
 
   $('.datepicker').pickadate({

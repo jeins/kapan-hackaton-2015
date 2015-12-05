@@ -13,6 +13,10 @@ bangunApp.service('bangunService', function($http, $location, $q){
     $http.get(_URL + '/api/project/' + hash_url).then(callback)
   };
 
+  this.getProfiles = function(callback){
+    $http.get(_URL + '/api/profiles').then(callback)
+  };
+
   this.getProfile = function(callback){
     $http.get(_URL + '/api/profile/' + hash_url).then(callback)
   };

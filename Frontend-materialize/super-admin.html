@@ -14,60 +14,35 @@
 
   <body>
 
-    <nav class="bc_main">
-      <div class="row">
-        <div class="col s10 push-s0 push-m1">
-          <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo">bangunIndonesia</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="#">Proyek</a></li>
-              <li><a href="#">Profil</a></li>
-              <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
-              <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-              <li><a href="#">Proyek</a></li>
-              <li><a href="#">Profil</a></li>
-              <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
-              <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
-            </ul>
-          </div>
-      </div>
-    </nav>
+  <nav class="bc_main">
+    <div class="row">
+      <div class="col s10 push-s0 push-m1">
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo">bangunIndonesia</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#">Proyek</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
+            <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="#">Proyek</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a class="modal-daftar-trigger" href="#modal-daftar">Daftar</a></li>
+            <li><a class="modal-login-trigger" href="#modal-login">Masuk</a></li>
+          </ul>
+        </div>
+    </div>
+  </nav>
 
-   <!-- Modal Login -->
-   <div id="modal-login" class="modal">
-     <div class="modal-content">
-       <h4>Login</h4>
-       <a class="waves-effect waves-light btn">Facebook</a>
-       <a class="waves-effect waves-light btn">Google</a>
-     </div>
-     <div class="modal-footer">
-       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Login</a>
-     </div>
-   </div>
-
-   <!-- Modal Daftar -->
-   <div id="modal-daftar" class="modal">
-     <div class="modal-content">
-       <h4>Daftar</h4>
-       <a class="waves-effect waves-light btn">Facebook</a>
-       <a class="waves-effect waves-light btn">Google</a>
-     </div>
-     <div class="modal-footer">
-       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Daftar</a>
-     </div>
-   </div>
-
-  <!-- <div navigation></div> -->
-
-  <div class="bangun_container dashboard_login_container">
+  <div class="bangun_container admin_container">
 
     <div class="row">
       <div class="col s12 m10 push-s0 push-m1 project_lists">
-        <h2> Login Admin</h2>
-        <form class="col s12" ng-submit="loginSubmit()" ng-controller="adminCtrl">
+
+        <h2> Login Super Admin</h2>
+        <form class="col s12" ng-submit="loginSubmit()" ng-controller="superAdminCtrl">
           <div class="row">
               <input type="email" name="email" id="email" class="validate" ng-model="email">
               <label for="email">Email</label>
@@ -83,8 +58,7 @@
       </div>
     </div>
 
-  </div><!-- end bangun container-->
-
+  </div> <!-- end admincontainter-->
 
   <div footer></div>
 
