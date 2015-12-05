@@ -4,6 +4,7 @@
     <!-- info total komentar dan tombol like & dislike || tanggapna postifi negatif-->
     <div class="row">
         <div class="col l5 s12 push-l7">
+            <p class="text-right"> Ada <span id="angka_komentar">20</span> Komentar untuk proyek ini </p>
             <a class="waves-effect waves-light btn modal-komentar-trigger light-blue darken-1" href="">Nilai Positif</a>
             <a class="waves-effect waves-light btn modal-komentar-negatif-trigger red lighten-1" href="">Nilai Negatif</a>
         </div>
@@ -19,6 +20,7 @@
 
         <div id="komentar1" class="col s12" ng-repeat="k in komentar">
             <div class="row each_box_komentar">
+
                 <div class="col l3 data_komentator">
                     <div class="row">
                         <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
@@ -33,9 +35,13 @@
                     {{k.post}}
                     <p class="btn-addkomentar"><a tooltipped class="btn-floating red" data-position="top" data-tooltip="Tambah Komentar"><i class="material-icons">add</i></a></p>
                 </div>
+            </div>
 
-                <div class="row each_box_komentar" ng-if="k.comments" ng-repeat="k_c in k.comments">
-                    <div>
+
+            <!-- balas komentar -->
+            <div class="row">
+                <div class="col s11 push-s1">
+                    <div class="row each_box_komentar" ng-if="k.comments" ng-repeat="k_c in k.comments">
                         <div class="col l3 data_komentator">
                             <div class="row">
                                 <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
@@ -52,6 +58,8 @@
                     </div>
                 </div>
             </div>
+            <!-- end balas komentar -->
+
         </div>
 
         <div id="komentar2" class="col s12">Test 2</div>
