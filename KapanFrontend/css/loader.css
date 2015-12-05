@@ -1,0 +1,83 @@
+.kapan-loader {
+    display: none;
+}
+
+[ng-cloak].kapan-loader {
+    display: block !important;
+    width: 100px;
+    height: 100px;
+    perspective: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+
+.loader__tile {
+    display: block;
+    float: left;
+    width: 33.33%;
+    height: 33.33%;
+    animation-name: flip;
+    transform-style: preserve-3d;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    transform: rotateY(0deg);
+    z-index: 0;
+}
+
+.loader__tile__1 {
+    background-color: #FF6666;
+    animation-delay: 0.1s;
+}
+
+.loader__tile__2 {
+    background-color: #FF3333;
+    animation-delay: 0.2s;
+}
+
+.loader__tile__3 {
+    background-color: #FF0000;
+    animation-delay: 0.3s;
+}
+
+.loader__tile__4 {
+    background-color: #FF9999;
+    animation-delay: 0.4s;
+}
+
+.loader__tile__5 {
+    background-color: #FF6666;
+    animation-delay: 0.5s;
+}
+
+.loader__tile__6 {
+    background-color: #FF3333;
+    animation-delay: 0.6s;
+}
+
+.loader__tile__7 {
+    background-color: #FFCCCC;
+    animation-delay: 0.7s;
+}
+
+.loader__tile__8 {
+    background-color: #FF9999;
+    animation-delay: 0.8s;
+}
+
+.loader__tile__9 {
+    background-color: #FF6666;
+    animation-delay: 0.9s;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    11% {
+        transform: rotateY(180deg);
+    }
+}

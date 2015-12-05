@@ -12,12 +12,16 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- LOAD CSS -->
     <link  type="text/css" rel="stylesheet" href="lib/materialize/bin/materialize.css">
+    <link  type="text/css" rel="stylesheet" href="css/loader.css">
     <link  type="text/css" rel="stylesheet" href="css/styles.css">
 
 
 </head>
 <!-- SET THE MAIN CONTROLLER -->
 <body layout="row" ng-controller="CtrlMain as CMain">
+
+<div ng-cloak="ng-cloak" class="kapan-loader"><i class="loader__tile loader__tile__1"></i><i class="loader__tile loader__tile__2"></i><i class="loader__tile loader__tile__3"></i><i class="loader__tile loader__tile__4"></i><i class="loader__tile loader__tile__5"></i><i class="loader__tile loader__tile__6"></i><i class="loader__tile loader__tile__7"></i><i class="loader__tile loader__tile__8"></i><i class="loader__tile loader__tile__9"></i></div>
+
 
 <div layout="column" class="ui-view-container" layout-fill ui-view>
 </div>
