@@ -1,5 +1,7 @@
 define([
     './controllers/CtrlProject',
+    './controllers/CtrlKomentar',
 
-    './services/SvcProject'
+    './services/SvcProject',
+    './services/SvcKomentar'
 ], function(){});

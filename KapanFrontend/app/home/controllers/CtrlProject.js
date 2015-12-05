@@ -13,9 +13,11 @@ define(['../app.home'], function(app){
                 $scope.projects = data;
             });
 
-            SvcProject.getProjectById($stateParams.id, function(data){
-                $scope.project = data;console.log(data);
-            })
+            if(typeof $stateParams.id !== 'undefined'){
+                SvcProject.getProjectById($stateParams.id, function(data){
+                    $scope.project = data;
+                })
+            }
         };
 
         this.init();
