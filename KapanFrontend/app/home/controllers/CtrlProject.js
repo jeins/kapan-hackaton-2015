@@ -20,6 +20,13 @@ define(['../app.home'], function(app){
             }
         };
 
+        $scope.$on('totalVote', function(event, mass){
+            $scope.totalVote = mass;
+        });
+        $scope.$on('totalKomentar', function(event, mass){
+            $scope.totalKomentar = mass;
+        });
+
         this.init();
     };
     app.controller(name, dependencies.concat(controller));

@@ -8,7 +8,7 @@ define(['angular'], function (angular) {
             'appPath': 'app/'
         },
         'http': {
-            'host': 'http://kapan.127.0.0.1.xip.io'
+            'host': 'http://kapans.127.0.0.1.xip.io'
         }
     });
 
