@@ -17,6 +17,7 @@ class PemerintahProfileSeeder extends Seeder
                 'email'         => 'pemerintah@id.com',
                 'password'      => Hash::make('testpass'),
                 'fullname'      => 'Menteri Pembangunan',
+                'jabatan'       => 'mentri laut',
                 'jenis_pejabat' => 'negara',
                 'is_active'     => true
             ],
@@ -24,6 +25,7 @@ class PemerintahProfileSeeder extends Seeder
                 'email'         => 'gubernur.dki@id.com',
                 'password'      => Hash::make('testing'),
                 'fullname'      => 'Gubernur DKI Jakarta',
+                'jabatan'       => 'mentri udara',
                 'jenis_pejabat' => 'daerah',
                 'is_active'     => true
             ]

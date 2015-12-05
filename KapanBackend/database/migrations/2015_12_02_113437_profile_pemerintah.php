@@ -17,6 +17,8 @@ class ProfilePemerintah extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('fullname');
+            $table->string('jabatan');
+            $table->date('tanggal_lahir');
             $table->text('deskripsi_profile')->nullable();
             $table->enum('jenis_pejabat', array('negara', 'daerah')); // negara / daerah
             $table->string('status_auth')->default('admin');
