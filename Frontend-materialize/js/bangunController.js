@@ -86,6 +86,19 @@ bangunApp.controller('detailCtrl', function($scope, bangunService, $http, $locat
     console.log(inputData);
   }
 
+
+  $scope.submitKomentarPositif = function(){
+
+    var inputData = {
+      komentar: this.komentar_text,
+      like: true,
+      media:this.komentar_media,
+      media_text:this.komentar_media_text
+    };
+
+    console.log(inputData);
+  }
+
 });
 
 
