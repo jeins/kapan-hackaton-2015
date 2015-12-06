@@ -22,7 +22,7 @@ define(['angular', 'satellizer'], function (angular) {
     ]);
 
     common.config(['$authProvider', 'CONFIG', function($authProvider, CONFIG){
-        $authProvider.loginUrl = CONFIG.http.host + '/auth/admin/login';
+        //$authProvider.loginUrl = CONFIG.http.host + '/auth/admin/login';
     }]);
 
     return common;
