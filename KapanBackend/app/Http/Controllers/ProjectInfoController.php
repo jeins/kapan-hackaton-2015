@@ -85,7 +85,7 @@ class ProjectInfoController extends Controller
             $project->deskripsi = $request->input('deskripsi');
             $project->outcome = $request->input('outcome');
             $project->lokasi = $request->input('lokasi');
-            $project->status_selesai = $request->input('status_selesai');
+            $project->status_project = $request->input('status_project');
             $project->biaya = $request->input('biaya');
             $project->waktu_pelaksanaan = $request->input('waktu_pelaksanaan');
             $project->jadwal_realisasi = $request->input('jadwal_pelaksanaan');

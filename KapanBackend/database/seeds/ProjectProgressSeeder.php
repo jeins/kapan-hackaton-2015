@@ -23,18 +23,6 @@ class ProjectProgressSeeder extends Seeder
                 'angka_progress' => 25,
                 'description' => 'asdas asdas asdasd ',
                 'tanggal_update' => '0000-00-00 00:00:00'
-            ],
-            [
-                'project_info_id'	=> 3,
-                'angka_progress' => 75,
-                'description' => 'asdas asdas asdasd ',
-                'tanggal_update' => '0000-00-00 00:00:00'
-            ],
-            [
-                'project_info_id'	=> 4,
-                'angka_progress' => 0,
-                'description' => 'asdas asdas asdasd ',
-                'tanggal_update' => '0000-00-00 00:00:00'
             ]
         ];
 
