@@ -1,7 +1,7 @@
-define(['angular'], function (angular) {
+define(['angular', 'leaflet', 'leaflet.plugins', 'leaflet.markercluster','angular.leaflet'], function (angular) {
     'use strict';
 
-    var home = angular.module('app.home', []);
+    var home = angular.module('app.home', ['leaflet-directive']);
 
     home.config([ '$urlRouterProvider', '$stateProvider',
         function($urlRouterProvider, $stateProvider){
@@ -20,6 +20,11 @@ define(['angular'], function (angular) {
                     url: '/profile/pemerintah/:id',
                     templateUrl: 'app/home/templates/profile_pemerintah.html',
                     controller: 'CtrlPemerintah as CPemerintah'
+                })
+                .state('map', {
+                    url: '/home/map',
+                    templateUrl: 'app/home/templates/project_home_map.html',
+                    controller: 'CtrlMap as CMap'
                 })
         }
     ]);
