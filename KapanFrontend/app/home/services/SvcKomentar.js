@@ -18,8 +18,22 @@ define(['../app.home'], function(app){
                 });
         }
 
+        function addKomentar(idProject, data, doneCallback){
+            var request = {
+                url: CONFIG.http.host + '/rakyat/post/project/' + idProject,
+                method: 'POST',
+                data: data
+            }
+
+            $http(request)
+                .then(function (resp){
+                   doneCallback(resp.data);
+                });
+        }
+
         return {
-            getKomentar: getKomentar
+            getKomentar: getKomentar,
+            addKomentar: addKomentar
         };
 
     };

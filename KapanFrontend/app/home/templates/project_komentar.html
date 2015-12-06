@@ -61,6 +61,8 @@
                 </div>
                 <!-- end balas komentar -->
             </div>
+
+            <br><a ng-if="isLogin()" class="waves-effect waves-light btn modal-komentar-trigger" style="width:100%" href="#modal-komentar-detail" modal>Tulis Komentar</a>
         </div>
 
         <div id="komentar2" class="col s12">Test 2</div>
@@ -92,8 +94,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="komentar" class="materialize-textarea" name="komentar" ng-model="komentar_text"></textarea>
-                        <label for="komentar">Textarea</label>
+                        <textarea id="post" class="materialize-textarea" name="post" ng-model="post"></textarea>
+                        <label for="post">Textarea</label>
                     </div>
                 </div>
 
