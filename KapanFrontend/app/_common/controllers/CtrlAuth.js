@@ -27,6 +27,7 @@ define(['../app.common'], function(app){
             $auth.signup(data)
                 .then(function() {
                     console.log("Success Signup Manual");
+                    $window.location.reload();
                 })
                 .catch(function(response) {
                     console.log(response.data.message);
@@ -37,6 +38,7 @@ define(['../app.common'], function(app){
             $auth.login({ email: this.email, password: this.password })
                 .then(function() {
                     console.log("Success Login Manual");
+                    $window.location.reload();
                 })
                 .catch(function(response) {
                     console.log(response.data.message);

@@ -1,19 +1,20 @@
 define([
-    'angular', 'jquery', 'hammerjs', 'materialize', 'app', 'angular.ui-router', 'angular.materialize', 'satellizer',
+    'angular', 'jquery', 'hammerjs', 'materialize', 'app', 'angular.ui-router', 'angular.materialize',
     './config',
     './_common/app.common', './_common/app.common.req',
-    './home/app.home', './home/app.home.req'
+    './home/app.home', './home/app.home.req',
+    './admin/app.admin', './admin/app.admin.req'
 ], function (angular) {
 
     var app = angular.module('app', [
-        'ui.router', 'ui.materialize', 'satellizer',
-        'app.config', 'app.common', 'app.home'
+        'ui.router', 'ui.materialize',
+        'app.config', 'app.common', 'app.home', 'app.admin'
     ]);
 
     // first route to homepage
     app.config(['$urlRouterProvider', '$locationProvider', function ($urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/');
+        //$urlRouterProvider.otherwise('/');
     }]);
 
     app.config(['$httpProvider', function($httpProvider) {
@@ -21,26 +22,6 @@ define([
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
     ]);
-
-    app.config(['$authProvider', 'CONFIG', function($authProvider, CONFIG){
-        $authProvider.signupUrl = CONFIG.http.host + '/auth/rakyat/signup';
-            $authProvider.loginUrl = CONFIG.http.host + '/auth/rakyat/login';
-
-            $authProvider.google({
-                name: 'google',
-                clientId: '735966287704-d97heeq4ouke1oj0ohi38cjc3i0hijh5.apps.googleusercontent.com',
-                url: CONFIG.http.host + '/auth/rakyat/google',
-                redirectUri: CONFIG.http.redirectUri
-            });
-
-
-            $authProvider.facebook({
-                'name': 'facebook',
-                clientId: '423629411165045',
-                url: CONFIG.http.host + '/auth/rakyat/facebook',
-                redirectUri: CONFIG.http.redirectUri
-            });
-    }]);
 
     app.run();
     return app;
