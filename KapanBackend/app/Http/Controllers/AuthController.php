@@ -35,6 +35,12 @@ class AuthController extends Controller
         return JWT::encode($payload, $this->token_secret);
     }
 
+    /**
+     * get current user
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getCurrentUser(Request $request){
         $token = explode(' ', $request->header('Authorization'))[1];
         $payload = (array) JWT::decode($token, $this->token_secret, array('HS256'));

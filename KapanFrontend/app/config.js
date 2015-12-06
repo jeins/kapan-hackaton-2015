@@ -9,7 +9,7 @@ define(['angular'], function (angular) {
         },
         'http': {
             'host': 'http://kapan.127.0.0.1.xip.io',
-            'redirectUri': 'http://kapancc.127.0.0.1.xip.io',
+            'redirectUri': 'http://kapancl.127.0.0.1.xip.io',
         }
     });
 

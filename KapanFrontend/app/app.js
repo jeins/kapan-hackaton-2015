@@ -14,7 +14,7 @@ define([
     // first route to homepage
     app.config(['$urlRouterProvider', '$locationProvider', function ($urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
-        //$urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/');
     }]);
 
     app.config(['$httpProvider', function($httpProvider) {
@@ -24,5 +24,6 @@ define([
     ]);
 
     app.run();
+
     return app;
 });

@@ -34,7 +34,7 @@ define(['../app.common'], function(app){
                 });
         };
 
-        $scope.login = function() {
+        $scope.login = function() {console.log(this.email + " " + this.password);
             $auth.login({ email: this.email, password: this.password })
                 .then(function() {
                     console.log("Success Login Manual");

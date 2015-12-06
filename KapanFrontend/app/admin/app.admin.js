@@ -3,18 +3,20 @@ define(['angular', 'satellizer'], function (angular) {
 
     var common = angular.module('app.admin', ['satellizer']);
 
-    common.config([ '$urlRouterProvider', '$stateProvider',
-        function($urlRouterProvider, $stateProvider){
+    common.config([ '$urlRouterProvider', '$stateProvider', 'APP_PERMISSION',
+        function($urlRouterProvider, $stateProvider, APP_PERMISSION){
             $stateProvider
                 .state('admin-login', {
                     url: '/admin/login',
                     controller: 'CtrlAdminAuth as CAAuth',
-                    templateUrl: 'app/admin/templates/admin_login_form.html'
+                    templateUrl: 'app/admin/templates/admin_login_form.html',
+                    permission: APP_PERMISSION.admin
                 })
                 .state('admin-dashboard', {
                     url: '/admin/dashboard',
                     controller: 'CtrlDashboard as CBoard',
-                    templateUrl: 'app/admin/templates/admin_dashboard.html'
+                    templateUrl: 'app/admin/templates/admin_dashboard.html',
+                    permission: APP_PERMISSION.admin
                 })
         }
     ]);

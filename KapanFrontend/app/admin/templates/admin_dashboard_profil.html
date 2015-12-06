@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col s12 m5 l4  detail_left_box">
+        <div class="biodata_utama">
+            <div class="row">
+                <div class="col m3"> <img src="asset/icon/user.png" alt="" /> </div>
+                <div class="col m9">
+                    <p id="nama_pemilik"> {{profil_infos.email}} </p>
+                    <p id="jabatan_pemilik"> {{profil_infos.fullname}} </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="biodata_umur text-center"> 42 Tahun  </div>
+        <div class="biodata_jabatan"> {{ profil_infos.fullname }} </div>
+        <div class="biodata_total_proyek text-center"> {{ profil_infos.totalProyek }} Proyek  </div>
+    </div>
+
+    <div class="col s12 m7 l8 detail_right_box">
+        <h3>Profil</h3>
+        <p> {{profil_infos.deskripsi_profile}} </p>
+    </div>
+</div>
+
+<div class="row">
+    <a class="waves-effect waves-light btn modal-updateProfile-trigger" style="width:100%" href="#modal-updateProfile" modal>Edit Profile</a>
+</div>
+
+<!-- ______________________  Modal update profile ____________ -->
+<div id="modal-updateProfile" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            Update Profile
+            <form class="col s12" ng-submit="updateSubmit()">
+                <div class="row" input-field>
+                    <input type="text" name="fullname" id="fullname" class="validate" value="{{profil_infos.fullname}}" ng-model="fullname">
+                    <label for="fullname">Nama Lengkap</label>
+                </div>
+
+                <div class="row" input-field>
+                    <input type="text" name="jabatan" id="jabatan" class="validate" value="{{profil_infos.fullname}}" ng-model="jabatan">
+                    <label for="jabatan">Jabatan</label>
+                </div>
+
+                <div class="row" input-field>
+                    <input type="email" name="email" id="email" class="validate" ng-model="email" value="">
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="row" input-field>
+                    <input type="password" name="password" id="password" class="validate" ng-model="password">
+                    <label for="password">Password</label>
+                </div>
+
+                <button class="waves-effect waves-light btn" type="submit">Update</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ______________________  END Modal update profile ____________ -->

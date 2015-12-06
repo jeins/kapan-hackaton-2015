@@ -2,8 +2,8 @@ define(['../app.home'], function(app){
     'use strict';
 
     var name = 'SvcProject';
-    var dependencies = ['$http', '$q', 'CONFIG'];
-    var service = function($http, $q, CONFIG){
+    var dependencies = ['$http', 'CONFIG'];
+    var service = function($http, CONFIG){
 
         function getProjects(doneCallback){
             var request = {
@@ -31,9 +31,23 @@ define(['../app.home'], function(app){
                 });
         }
 
+        function getProjectByIdPemerintah(idPemerintah, doneCallBack){
+            var request = {
+                url: CONFIG.http.host + '/api/project/pemerintah/' + idPemerintah,
+                method: 'GET',
+                data: ''
+            };
+
+            $http(request)
+                .then(function (resp) {
+                    doneCallBack(resp.data);
+                });
+        }
+
         return {
             getProjects: getProjects,
-            getProjectById: getProjectById
+            getProjectById: getProjectById,
+            getProjectByIdPemerintah: getProjectByIdPemerintah
         };
 
     };

@@ -1,125 +1,46 @@
+<div class="bangun_container dashboard_container">
 
-<ng-include src="'app/home/templates/_navigation.html'" ng-controller="CtrlAuth as CAuth" style="top:0px"></ng-include>
+    <div id="proyek_wrapper">
 
-<div class="bangun_container super_admin_container">
-
-    <!-- tab list -->
-    <div class="row">
-        <div class="col s12 m10 push-s0 push-m1">
-            <h2>Dashboard Super Admin</h2>
-            <ul class="tabs" tabs>
-                <li class="tab col s3"><a class="active" href="#dashboard_project_list">List Proyek</a></li>
-                <li class="tab col s3"><a href="#admin_lists">List Admin</a></li>
-                <li class="tab col s3"><a href="#admin_register">Tambah Admin</a></li>
-            </ul>
+        <div class="row">
+            <div class="col s12 m10 push-s0 push-m1">
+                <h2>Dashboard Admin</h2>
+                <ul class="tabs" tabs>
+                    <li class="tab col s3"><a class="active" href="#dashboard_project_list">Proyek</a></li>
+                    <li class="tab col s3"><a href="#dashboard_profil">Profil</a></li>
+                    <li class="tab col s3"><a href="#dashboard_add_project">Tambah-Proyek</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <!-- _______________________________________________________________________________________________ -->
-    <!-- ________ Daftar proyek dan lihat jumlah komentar buat threshold ke lapor.go.id ________________ --->
-    <!-- _______________________________________________________________________________________________ -->
-    <div class="row">
-        <div class="col s12 m10 push-s0 push-m1" id="dashboard_project_list" >
 
-            <h3> Daftar Proyek </h3>
+        <div class="row">
+            <div class="col s12 m10 push-s0 push-m1 project_lists">
 
-            <div id="dashboard_project_list">
+                <!-- _______________________________________________________________________________________________ -->
+                <!-- __________________________________ Tab Project list _________________________________________>
+                <!-- _______________________________________________________________________________________________ -->
+                <div id="dashboard_project_list">
+                    <ng-include src="'app/admin/templates/admin_dashboard_proyek.html'" style="top:0px"></ng-include>
+                </div> <!-- end dashboard proejct list -->
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn bc_main"><i class="material-icons left">view_array</i>Kartu</a>
-                    <a class="waves-effect waves-light btn bc_main"><i class="material-icons left">language</i>Peta</a>
+                <!-- _______________________________________________________________________________________________ -->
+                <!-- __________________________________ Tab Profil Content__________________________________________ -->
+                <!-- _______________________________________________________________________________________________ -->
+                <div id="dashboard_profil">
+                    <ng-include src="'app/admin/templates/admin_dashboard_profil.html'" style="top:0px"></ng-include>
+                </div><!-- end dashboard_profil -->
+
+                <!-- _______________________________________________________________________________________________ -->
+                <!-- __________________________________ Tab proyek Baru ____________________________________________ -->
+                <!-- _______________________________________________________________________________________________ -->
+                <div id="dashboard_add_project">
+                    <ng-include src="'app/admin/templates/admin_dashboard_add_proyek.html'" style="top:0px"></ng-include>
                 </div>
 
-                <div ng-repeat="project in projects">
-
-                    <div class="col s12 l4">
-
-                        <div class="card">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="asset/monas.jpg" >
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">{{ project.nama }}<i class="material-icons right">more_vert</i></span>
-                                <p><a ng-href="detail.html#{{project.id}}">Lihat Detail</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">{{ project.nama }}<i class="material-icons right">close</i></span>
-                                <p class="card-lokasi"><img src="asset/icon/lokasi.png" alt="" />Lokasi </p>
-                                <p>Oleh {{ project.profile_pemerintah.fullname }}</p>
-                                <p>{{ project.deskripsi }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <!-- end ng-repeat -->
-
-            </div> <!-- end dashboard proejct list -->
-
-            <div id="map"></div>
-
+            </div>
         </div>
-    </div>
 
-
-    <!-- _______________________________________________________________________________________________ -->
-    <!-- _____________________ Pemerintah (admin) sekarang list ________________________________________ --->
-    <!-- _______________________________________________________________________________________________ -->
-    <div class="row">
-        <div class="col s12 m10 push-s0 push-m1" id="admin_lists">
-
-            <h3> Daftar Admin </h3>
-
-            <ul class="collection">
-                <li class="collection-item avatar" ng-repeat="profile in profiles">
-                    <img src="asset/Sofyan_Djalil.jpg" alt="" class="circle">
-                    <span class="title">{{profile.fullname}}</span>
-                    <p>{{profile.email}}</p>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-
-
-    <!-- _______________________________________________________________________________________________ -->
-    <!-- __________________________________ DAftar admin baru _________________________________________   --->
-    <!-- _______________________________________________________________________________________________ -->
-    <div class="row">
-        <div class="col s12 m10 push-s0 push-m1" id="admin_register">
-
-            <h3> Register Admin Pemerintah </h3>
-            <form class="col s12" ng-submit="registerSubmit()">
-                <div class="row">
-                    <input type="text" name="fullname" id="fullname" class="validate" placeholder="Susi Pudjiastuti" ng-model="fullname">
-                    <label for="fullname">Nama Lengkap</label>
-                </div>
-
-                <div class="row">
-                    <input type="text" name="jabatan" id="jabatan" class="validate" placeholder="Menteri kelautan dan perikanan" ng-model="jabatan">
-                    <label for="jabatan">Jabatan</label>
-                </div>
-
-                <div class="row">
-                    <input type="email" name="email" id="email" class="validate" ng-model="email">
-                    <label for="email">Email</label>
-                </div>
-
-                <div class="row">
-                    <input type="password" name="password" id="password" class="validate" ng-model="password">
-                    <label for="password">Password</label>
-                </div>
-
-                <button class="waves-effect waves-light btn" type="submit">Daftar</button>
-            </form>
-
-        </div>
-    </div>
-
-
-
+    </div><!-- end proyek wrapper -->
 
 </div>
-</div> <!-- end admincontainter-->
-
-
-<ng-include src="'app/home/templates/_footer.html'" style="top:0px"></ng-include>
