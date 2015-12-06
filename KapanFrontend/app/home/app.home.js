@@ -3,8 +3,7 @@ define(['angular'], function (angular) {
 
     var home = angular.module('app.home', []);
 
-    home.config([
-        '$urlRouterProvider', '$stateProvider',
+    home.config([ '$urlRouterProvider', '$stateProvider',
         function($urlRouterProvider, $stateProvider){
             $stateProvider
                 .state('home', {

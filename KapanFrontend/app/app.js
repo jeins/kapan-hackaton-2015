@@ -16,9 +16,15 @@ define([
         $urlRouterProvider.otherwise('/');
     }]);
 
-    app.config(['$authProvider', 'CONFIG', function($authProvider, CONFIG){console.log(CONFIG);
-            $authProvider.loginUrl = CONFIG.http.host + '/auth/login';
-            $authProvider.signupUrl = CONFIG.http.host + '/auth/signup';
+    app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = false;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+    ]);
+
+    app.config(['$authProvider', 'CONFIG', function($authProvider, CONFIG){
+            $authProvider.loginUrl = CONFIG.http.host + '/auth/rakyat/login';
+            $authProvider.signupUrl = CONFIG.http.host + '/auth/rakyat/signup';
 
             $authProvider.google({
                 name: 'google',

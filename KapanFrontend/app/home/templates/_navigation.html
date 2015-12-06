@@ -6,9 +6,10 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Proyek</a></li>
-                    <li><a href="#">Profil</a></li>
-                    <li><a class="modal-daftar-trigger" href="#modal-daftar" modal>Daftar</a></li>
-                    <li><a class="modal-login-trigger" href="#modal-login" modal>Masuk</a></li>
+                    <li ng-if="isLogin()"><a href="#">Profil</a></li>
+                    <li ng-if="!isLogin()"><a class="modal-daftar-trigger" href="#modal-daftar" modal>Daftar</a></li>
+                    <li ng-if="!isLogin()"><a class="modal-login-trigger" href="#modal-login" modal>Masuk</a></li>
+                    <li ng-if="isLogin()"><a class="modal-login-trigger" href="" >Logout</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="#">Proyek</a></li>
@@ -20,13 +21,30 @@
         </div>
     </div>
 </nav>
-
 <!-- Modal Login -->
 <div id="modal-login" class="modal">
     <div class="modal-content">
         <h4>Login</h4>
+
+        <p> Login Dengan sosial media </p>
         <button class="waves-effect waves-light btn" ng-click="authenticate('facebook')">Facebook</button>
         <button class="waves-effect waves-light btn" ng-click="authenticate('google')">Google</button>
+
+        <p> Login Dengan Email </p>
+        <form class="col s12" ng-submit="login()">
+            <div class="row">
+                <input type="email" name="email" id="email" class="validate" ng-model="email">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="row">
+                <input type="password" name="password" id="password" class="validate" ng-model="password">
+                <label for="password">Password</label>
+            </div>
+
+            <button class="waves-effect waves-light btn" type="submit">Login</button>
+        </form>
+
     </div>
     <div class="modal-footer">
         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Login</a>
@@ -37,10 +55,31 @@
 <div id="modal-daftar" class="modal">
     <div class="modal-content">
         <h4>Daftar</h4>
+
+        <p> Daftar Dengan sosial media </p>
         <button class="waves-effect waves-light btn" ng-click="authenticate('facebook')">Facebook</button>
         <button class="waves-effect waves-light btn" ng-click="authenticate('google')">Google</button>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Daftar</a>
+
+        <p> Daftar Dengan Email </p>
+
+        <form method="post" ng-submit="signup()">
+            <div class="row">
+                <input type="text" name="fullname" id="fullname" class="validate" ng-model="fullname">
+                <label for="fullname">Nama Lengkap</label>
+            </div>
+
+            <div class="row">
+                <input type="email" name="email" id="emailfrm" class="validate" ng-model="email">
+                <label for="emailfrm">Email</label>
+            </div>
+
+            <div class="row">
+                <input type="password" name="password" id="pwd" class="validate" ng-model="password">
+                <label for="pwd">Password</label>
+            </div>
+
+            <button class="waves-effect waves-light btn" type="submit">Daftar</button>
+        </form>
+
     </div>
 </div>

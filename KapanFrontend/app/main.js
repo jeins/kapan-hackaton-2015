@@ -19,10 +19,10 @@ require.config({
         'jquery': {exports: 'jquery'},
         'leaflet': {exports: 'leaflet'},
         'hammerjs': {exports: 'hammerjs'},
+        'angular.materialize': {deps: ['angular']},
+        'materialize': {deps: ['jquery', 'angular.materialize']},
         'angular.ui-router': {deps: ['angular']},
         'satellizer': {deps: ['angular']},
-        'materialize': {deps: ['jquery']},
-        'angular.materialize': {deps: ['angular']},
         'leaflet.plugins': {deps: ['leaflet']},
         'leaflet.markercluster': {deps: ['leaflet']},
         'angular.leaflet': {deps: ['angular', 'leaflet']}

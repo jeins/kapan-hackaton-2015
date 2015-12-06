@@ -3,8 +3,7 @@ define(['angular', 'satellizer'], function (angular) {
 
     var common = angular.module('app.common', ['satellizer']);
 
-    common.config([
-        '$urlRouterProvider', '$stateProvider',
+    common.config([ '$urlRouterProvider', '$stateProvider',
         function($urlRouterProvider, $stateProvider){
             $stateProvider
                 .state('login', {
