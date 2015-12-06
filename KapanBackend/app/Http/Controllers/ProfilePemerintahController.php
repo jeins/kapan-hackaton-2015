@@ -28,6 +28,12 @@ class ProfilePemerintahController extends Controller
     public function getProfile($id){
         $profile = ProfilePemerintah::with('projects')->find($id);
 
+        $born = $profile->tanggal_lahir;
+        //31556926 = number of seconds in a year.
+        $age = floor((time() - strtotime($born)) / 31556926);
+        //create var 'umur'
+        $profile->umur = $age;
+
         return response()->json($profile);
     }
 
