@@ -7,6 +7,7 @@ use App\Models\ProjectInfo;
 use App\Models\ProfilePemerintah;
 use App\Models\PostComment;
 use App\Models\ProfileRakyat;
+use App\Models\ProjectProgress;
 use Illuminate\Http\Request;
 
 class ProjectInfoController extends Controller
@@ -37,6 +38,40 @@ class ProjectInfoController extends Controller
         $project = ProjectInfo::with('profilePemerintah')->find($id);
 
         $totalCommands = $project->projectPost->count();
+
+        $jadwal_realisasi = $project->jadwal_realisasi;
+        $datetime = explode(" ",$jadwal_realisasi);
+        $jadwal_realisasi = $datetime[0];
+
+        $waktu_pelaksaan = $project->waktu_pelaksanaan;
+        $datetime = explode(" ",$waktu_pelaksaan);
+        $waktu_pelaksaan = $datetime[0];
+
+        $diff = abs(strtotime($jadwal_realisasi) - strtotime($waktu_pelaksaan));
+
+        $years = floor($diff / (365*60*60*24));
+        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+        $data_waktu = $days." hari, ".$months." bulan, ".$years." tahun lagi";
+
+        //set data waktu
+        $project->data_waktu = $data_waktu;
+
+        //get project progess per project_info_id
+        $progress = ProjectProgress::where('project_info_id', '=', $id)->first();
+        $progress = $progress->angka_progress;
+
+        //set angka_progress
+        $project->angka_progress = $progress;
+
+        //get project location
+        $decoded = json_decode($project->lokasi, true);
+
+        //set project location
+        $project->lokasi_proyek = $decoded['tempat'];
+        $project->lokasi_longitude = $decoded['lng'];
+        $project->lokasi_latitude = $decoded['lat'];
 
         return response()->json(array_merge($project->toArray(), ['total_komentar' => $totalCommands]));
     }
