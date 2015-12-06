@@ -28,6 +28,8 @@ $app->group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers'], functio
     $app->post('rakyat/google', 'AuthController@googleOAuth');
 
     $app->post('rakyat/facebook', 'AuthController@facebookOAuth');
+
+    $app->post('currentuser', 'AuthController@getCurrentUser');
 });
 
 // ===============================================
