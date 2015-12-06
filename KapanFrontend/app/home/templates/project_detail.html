@@ -9,7 +9,7 @@
                 <div class="col l5 m5 s12"><img materialboxed class="materialboxed responsive-img" src="{{project.images}}" alt="" /></div>
                 <div class="col l7 m7 s12 dph_right">
                     <div class="judul_proyek">  {{ project.nama }} </div>
-                    <div class="lokasi_proyek"> DKI Jakarta </div>
+                    <div class="lokasi_proyek"> {{ project.lokasi_proyek }} </div>
                     <div class="status_proyek" ng-switch on="project.status_selesai">
                         <span ng-switch-when="0">Sedang Dikerjakan</span>
                         <span ng-switch-when="1">Rencana</span>

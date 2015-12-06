@@ -61,6 +61,14 @@ class ProjectInfoController extends Controller
         //set angka_progress
         $project->angka_progress = $progress;
 
+        //get project location
+        $decoded = json_decode($project->lokasi, true);
+
+        //set project location
+        $project->lokasi_proyek = $decoded['tempat'];
+        $project->lokasi_longitude = $decoded['lng'];
+        $project->lokasi_latitude = $decoded['lat'];
+
         return response()->json(array_merge($project->toArray(), ['total_komentar' => $totalCommands]));
     }
 
