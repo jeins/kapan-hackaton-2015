@@ -1,0 +1,73 @@
+
+<ng-include src="'app/home/templates/_navigation.html'" ng-controller="CtrlAuth as CAuth" style="top:0px"></ng-include>
+<div class="bangun_container profil_container">
+    <div class="row">
+
+        <div class="col s12 m10 push-s0 push-m1 profile_content">
+
+            <div class="row">
+                <div class="col s12 m5 l4  detail_left_box">
+                    <div class="biodata_utama">
+                        <div class="row">
+                            <div class="col m3"> <img src="{{profil_infos.image}}" alt="" /> </div>
+                            <div class="col m9">
+                                <h5 id="jabatan_pemilik"> {{profil_infos.fullname}} </h5>
+                                <p id="nama_pemilik"> {{profil_infos.email}} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="biodata_umur text-center"> 42 Tahun  </div>
+                    <div class="biodata_jabatan"> {{ profil_infos.fullname }} </div>
+                    <div class="biodata_total_proyek text-center"> {{ profil_infos.totalProyek }} Proyek  </div>
+                </div>
+
+                <div class="col s12 m7 l8 detail_right_box">
+                    <h3>Profil</h3>
+                    <p> {{profil_infos.deskripsi_profile}} </p>
+                </div>
+            </div>
+
+            <br>
+
+            <div id="proyek_wrapper">
+
+                <div class="row">
+                    <div class="col s12 project_lists">
+
+                        <div id="kartu_proyek">
+                            <div ng-repeat="projectEach in profil_infos.projects">
+
+                                <div class="col s12 m6">
+
+                                    <div class="card">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                            <img class="activator" src="{{projectEach.images}}" >
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-title activator grey-text text-darken-4">{{ projectEach.nama }}<i class="material-icons right">more_vert</i></span>
+                                            <p><a ng-href="detail.html#{{projectEach.id}}">Lihat Detail</a></p>
+                                        </div>
+                                        <div class="card-reveal">
+                                            <span class="card-title grey-text text-darken-4">{{ project.nama }}<i class="material-icons right">close</i></span>
+                                            <p class="card-lokasi"><img src="asset/icon/lokasi.png" alt="" />Lokasi </p>
+                                            <p>Oleh {{ profil_infos.fullname }}</p>
+                                            <p>{{ projectEach.deskripsi }} </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div> <!-- end ng-repeat -->
+                        </div>
+
+                        <div id="map"></div>
+                    </div>
+                </div>
+
+            </div><!-- end proyek_wrapper-->
+        </div><!-- end col-10-->
+
+    </div>
+</div><!-- end profil container -->
+<ng-include src="'app/home/templates/_footer.html'" style="top:0px"></ng-include>

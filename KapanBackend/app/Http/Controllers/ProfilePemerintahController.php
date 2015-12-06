@@ -26,7 +26,7 @@ class ProfilePemerintahController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getProfile($id){
-        $profile = ProfilePemerintah::find($id);
+        $profile = ProfilePemerintah::with('projects')->find($id);
 
         return response()->json($profile);
     }

@@ -6,7 +6,7 @@
 
         <div class="col s12 m10 push-s0 push-m1 detail_content">
             <div class="row detail_preview_header">
-                <div class="col l5 m5 s12"><img src="asset/monas.jpg" alt="" /></div>
+                <div class="col l5 m5 s12"><img materialboxed class="materialboxed responsive-img" src="{{project.images}}" alt="" /></div>
                 <div class="col l7 m7 s12 dph_right">
                     <div class="judul_proyek">  {{ project.nama }} </div>
                     <div class="lokasi_proyek"> DKI Jakarta </div>
@@ -23,10 +23,10 @@
                 <div class="col l4 s12 detail_left_box">
                     <div class="data_pemilik">
                         <div class="row">
-                            <div class="col l3 s12"> <img src="asset/icon/user.png" alt="" /> </div>
+                            <div class="col l3 s12"> <img src="{{project.profile_pemerintah.image}}" alt="" /> </div>
                             <div class="col l9 s12">
-                                <a ng-href="profil.html#{{ project.profile_pemerintah_id }}"><p id="nama_pemilik"> Nama Orang </p></a>
-                                <p id="jabatan_pemilik"> Jabatan </p>
+                                <a ng-href="/profile/pemerintah/{{project.profile_pemerintah.id }}"><p id="nama_pemilik"> {{project.profile_pemerintah.fullname}} </p></a>
+                                <p id="jabatan_pemilik"> {{project.profile_pemerintah.jabatan}} </p>
                             </div>
                         </div>
                     </div>

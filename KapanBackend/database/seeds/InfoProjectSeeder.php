@@ -27,7 +27,7 @@ class InfoProjectSeeder extends Seeder
             ],
             [
                 'profile_pemerintah_id' => '5',
-                'nama'              => 'Pembangunan Bandara Internasional Jawa barat (BIJB) Kertajati',
+                'nama'              => 'Pembangunan Bandara Internasional Jawa barat',
                 'jenis'             => 'daerah',
                 'deskripsi'         => 'Bandara Internasional Jawa Barat terletak di Kertajati, sekitar 97 km dari Bandung, ibu kota Provinsi Jawa Barat Indonesia. Ditempatkan strategis di sekitar daerah pembangunan Jawa Barat, aksesibilitas PT. BIJB dijamin dengan memiliki dua jalan raya dan kereta api yang menghubungkan Bandung, Kertajati, dan Cirebon; Cisumdawu Jalan Tol untuk menghubungkan Bandung dan Kertajati; Jalan tol Cikapali yang menghubungkan Kertajati dan Karawang Industrial Zone; dan juga memiliki hubungan langsung dengan Pelabuhan Cirebon.',
                 'outcome'           => 'Bandara ini akan memberikan dampak positif bagi perekonomian Jabar, termasuk kemajuan wilayah Jabar Bagian timur',

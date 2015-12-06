@@ -30,7 +30,7 @@ class ProjectInfoController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getProjectById($id){
-        $project = ProjectInfo::find($id);
+        $project = ProjectInfo::with('profilePemerintah')->find($id);
 
         $totalCommands = $project->projectPost->count();
 

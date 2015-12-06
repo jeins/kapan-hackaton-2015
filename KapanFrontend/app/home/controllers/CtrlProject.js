@@ -15,7 +15,7 @@ define(['../app.home'], function(app){
 
             if(typeof $stateParams.id !== 'undefined'){
                 SvcProject.getProjectById($stateParams.id, function(data){
-                    $scope.project = data;
+                    $scope.project = data;console.log(data);
                 })
             }
         };

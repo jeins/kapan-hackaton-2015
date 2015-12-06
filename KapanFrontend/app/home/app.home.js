@@ -16,6 +16,11 @@ define(['angular'], function (angular) {
                     templateUrl: 'app/home/templates/project_detail.html',
                     controller: 'CtrlProject as CProject'
                 })
+                .state('profilePemerintah', {
+                    url: '/profile/pemerintah/:id',
+                    templateUrl: 'app/home/templates/profile_pemerintah.html',
+                    controller: 'CtrlPemerintah as CPemerintah'
+                })
         }
     ]);
 
