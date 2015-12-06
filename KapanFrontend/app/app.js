@@ -23,8 +23,8 @@ define([
     ]);
 
     app.config(['$authProvider', 'CONFIG', function($authProvider, CONFIG){
+        $authProvider.signupUrl = CONFIG.http.host + '/auth/rakyat/signup';
             $authProvider.loginUrl = CONFIG.http.host + '/auth/rakyat/login';
-            $authProvider.signupUrl = CONFIG.http.host + '/auth/rakyat/signup';
 
             $authProvider.google({
                 name: 'google',

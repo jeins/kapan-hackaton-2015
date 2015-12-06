@@ -4,7 +4,7 @@ define(['../app.home'], function(app){
     var name = 'CtrlKomentar';
     var dependencies = ['$scope' , 'SvcKomentar', '$stateParams', '$auth', '$window'];
     var controller = function($scope, SvcKomentar, $stateParams, $auth, $window){
-        $scope.komentar = {};
+        $scope.komentar = {};this.komentar_like_toggle = true;
 
         $scope.isLogin = function(){
             return $auth.isAuthenticated();
@@ -23,7 +23,7 @@ define(['../app.home'], function(app){
             $scope.$emit('totalKomentar', totalKomentar);
         });
 
-        $scope.submitKomentar = function(){
+        $scope.submitKomentar = function(){console.log(this.komentar_like_toggle);
             var data = {"post": this.post};
             SvcKomentar.addKomentar($stateParams.id, data, function(result){
                 $window.location.reload();

@@ -6,7 +6,7 @@
         <div class="col l5 s12 push-l7">
             <p class="text-right"> Ada <span id="angka_komentar">20</span> Komentar untuk proyek ini </p>
             <a class="waves-effect waves-light btn modal-komentar-trigger light-blue darken-1" href="#modal-komentar-positif-detail" modal>Nilai Positif</a>
-            <a class="waves-effect waves-light btn modal-komentar-negatif-trigger red lighten-1" href="">Nilai Negatif</a>
+            <a class="waves-effect waves-light btn modal-komentar-negatif-trigger red lighten-1" href="#modal-komentar-negatif-detail">Nilai Negatif</a>
         </div>
     </div>
 
@@ -130,7 +130,7 @@
                     <div class="switch">
                         <label>
                             Negatif
-                            <input disabled type="checkbox" name="like_toggle" id="checkbox_auto_positif" ng-model="komentar_like_toggle">
+                            <input type="checkbox" name="like_toggle" ng-model="komentar_like_toggle" checked="true">
                             <span class="lever"></span>
                             Positif
                         </label>
