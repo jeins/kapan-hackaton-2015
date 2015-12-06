@@ -5,14 +5,14 @@
   <div class="slider" slider>
     <ul class="slides">
         <li>
-            <img src="../asset/landing_background.jpg"> <!-- random image -->
+            <img src="/asset/landing_background.jpg"> <!-- random image -->
             <div class="caption center-align">
                 <h3>Data transparan dari pemerintah</h3>
                 <h5 class="light grey-text text-lighten-3">Mari bersama membangun Indonesia. </h5>
             </div>
         </li>
         <li>
-            <img src="../asset/nightview.jpeg"> <!-- random image -->
+            <img src="/asset/nightview.jpeg"> <!-- random image -->
             <div class="caption left-align">
                 <h3>Dukungan dan pengawasan masyarakat</h3>
                 <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
@@ -58,7 +58,7 @@
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-darken-4">{{ project.nama }}<i class="material-icons right">close</i></span>
                                 <p class="card-lokasi"><img src="asset/icon/lokasi.png" alt="" />Lokasi </p>
-                                <p>Oleh {{ project.profile_pemerintah.fullname }}</p>
+                                <p>Oleh <a href="/profile/pemerintah/{{project.profile_pemerintah.id}}">{{ project.profile_pemerintah.fullname }}</a></p>
                                 <p>{{ project.deskripsi }}</p>
                             </div>
                         </div>
