@@ -1,1 +1,17 @@
-<leaflet event-broadcast="events" layers="layers" center="center" markers="markers" width="100%" height="400px"></leaflet>
+
+<ng-include src="'app/home/templates/_navigation.html'" ng-controller="CtrlAuth as CAuth" style="top:0px"></ng-include>
+
+<div id="proyek_wrapper" >
+
+        <div class="row" style="margin-top: 20px; text-align: center">
+        <div class="col s12 m10 push-s0 push-m1">
+            <a class="waves-effect waves-light btn bc_main" href="/a" style="background-color: white !important; color: black"><i class="material-icons left">view_array</i>Kartu</a>
+            <a class="waves-effect waves-light btn bc_main" href="/home/map" style="background-color: green !important;"><i class="material-icons left">language</i>Peta</a>
+        </div>
+    </div>
+
+    <leaflet event-broadcast="events" layers="layers" center="center" markers="markers" width="100%" height="400px"></leaflet>
+
+    </div>
+
+<ng-include src="'app/home/templates/_footer.html'" style="top:0px"></ng-include>

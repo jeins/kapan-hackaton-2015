@@ -20,6 +20,10 @@ class ProjectInfoController extends Controller
     public function getAllProject(){
         $projects = ProjectInfo::with('profilePemerintah')->get();
 
+        foreach($projects as $project){
+            $project['lokasi'] = json_decode(json_decode($project['lokasi']));
+        }
+
         return response()->json($projects);
     }
 
