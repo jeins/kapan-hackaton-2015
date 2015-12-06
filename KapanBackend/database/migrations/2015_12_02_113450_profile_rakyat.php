@@ -20,6 +20,7 @@ class ProfileRakyat extends Migration
             $table->string('google_token')->nullable();
             $table->string('fullname')->nullable();
             $table->string('status_auth')->default('rakyat');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
