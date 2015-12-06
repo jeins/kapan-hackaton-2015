@@ -7,6 +7,7 @@ use App\Models\ProjectInfo;
 use App\Models\ProfilePemerintah;
 use App\Models\PostComment;
 use App\Models\ProfileRakyat;
+use App\Models\ProjectProgress;
 use Illuminate\Http\Request;
 
 class ProjectInfoController extends Controller
@@ -50,7 +51,15 @@ class ProjectInfoController extends Controller
 
         $data_waktu = $days." hari, ".$months." bulan, ".$years." tahun lagi";
 
+        //set data waktu
         $project->data_waktu = $data_waktu;
+
+        //get project progess per project_info_id
+        $progress = ProjectProgress::where('project_info_id', '=', $id)->first();
+        $progress = $progress->angka_progress;
+
+        //set angka_progress
+        $project->angka_progress = $progress;
 
         return response()->json(array_merge($project->toArray(), ['total_komentar' => $totalCommands]));
     }
