@@ -34,6 +34,24 @@ class ProjectInfoController extends Controller
 
         $totalCommands = $project->projectPost->count();
 
+        $jadwal_realisasi = $project->jadwal_realisasi;
+        $datetime = explode(" ",$jadwal_realisasi);
+        $jadwal_realisasi = $datetime[0];
+
+        $waktu_pelaksaan = $project->waktu_pelaksanaan;
+        $datetime = explode(" ",$waktu_pelaksaan);
+        $waktu_pelaksaan = $datetime[0];
+
+        $diff = abs(strtotime($jadwal_realisasi) - strtotime($waktu_pelaksaan));
+
+        $years = floor($diff / (365*60*60*24));
+        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+        $data_waktu = $days." hari, ".$months." bulan, ".$years." tahun lagi";
+
+        $project->data_waktu = $data_waktu;
+
         return response()->json(array_merge($project->toArray(), ['total_komentar' => $totalCommands]));
     }
 
