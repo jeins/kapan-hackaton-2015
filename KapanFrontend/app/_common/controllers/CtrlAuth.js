@@ -2,12 +2,12 @@ define(['../app.common'], function(app){
     'use strict';
 
     var name = 'CtrlAuth';
-    var dependencies = ['$scope', '$auth'];
-    var controller = function($scope, $auth){
+    var dependencies = ['$scope', '$auth', '$window'];
+    var controller = function($scope, $auth, $window){
         $scope.title = "Auth";
         $scope.fullname="asdas dasd";
-        $scope.email = "asd@asd.co";
-        $scope.password = "adasd";
+        $scope.email = "sebastian@gmail.com";
+        $scope.password = "mautauaja";
 
         $scope.isLogin = function(){
             return $auth.isAuthenticated();
@@ -17,6 +17,7 @@ define(['../app.common'], function(app){
             $auth.authenticate(provider)
                 .then(function() {
                     console.log("Succes");
+                    $window.location.reload();
                 })
         };
 
@@ -38,11 +39,22 @@ define(['../app.common'], function(app){
             $auth.login({ email: $scope.email, password: $scope.password })
                 .then(function() {
                     console.log("Success Login Manual");
+                    $window.location.reload();
                 })
                 .catch(function(response) {
                     console.log(response.data.message);
                 });
         };
+
+        $scope.logout = function(){
+            if (!$auth.isAuthenticated()) {
+                return;
+            }
+            $auth.logout()
+                .then(function() {
+                    console.log("Logout");
+                });
+        }
     };
     app.controller(name, dependencies.concat(controller));
 });

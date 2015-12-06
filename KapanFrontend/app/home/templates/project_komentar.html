@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col l5 s12 push-l7">
             <p class="text-right"> Ada <span id="angka_komentar">20</span> Komentar untuk proyek ini </p>
-            <a class="waves-effect waves-light btn modal-komentar-trigger light-blue darken-1" href="">Nilai Positif</a>
+            <a class="waves-effect waves-light btn modal-komentar-trigger light-blue darken-1" href="#modal-komentar-positif-detail" modal>Nilai Positif</a>
             <a class="waves-effect waves-light btn modal-komentar-negatif-trigger red lighten-1" href="">Nilai Negatif</a>
         </div>
     </div>
@@ -18,52 +18,168 @@
             </ul>
         </div>
 
-        <div id="komentar1" class="col s12" ng-repeat="k in komentar">
-            <div class="row each_box_komentar">
+        <div id="komentar1" class="col s12">
+            <div ng-repeat="k in komentar">
+                <div class="row each_box_komentar" >
 
-                <div class="col l3 data_komentator">
-                    <div class="row">
-                        <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
-                        <div class="col l9">
-                            <p class="nama_komentator"> {{k.profile_rakyat[0].fullname}} </p>
-                            <p class="waktu_komentator"> 40 menit yang lalu</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col l9 isi_komentar">
-                    {{k.post}}
-                    <p class="btn-addkomentar"><a tooltipped class="btn-floating red" data-position="top" data-tooltip="Tambah Komentar"><i class="material-icons">add</i></a></p>
-                </div>
-            </div>
-
-
-            <!-- balas komentar -->
-            <div class="row">
-                <div class="col s11 push-s1">
-                    <div class="row each_box_komentar" ng-if="k.comments" ng-repeat="k_c in k.comments">
-                        <div class="col l3 data_komentator">
-                            <div class="row">
-                                <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
-                                <div class="col l9">
-                                    <p class="nama_komentator"> {{k_c.profile_rakyat.fullname}} </p>
-                                    <p class="waktu_komentator"> 40 menit yang lalu</p>
-                                </div>
+                    <div class="col l3 data_komentator">
+                        <div class="row">
+                            <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
+                            <div class="col l9">
+                                <p class="nama_komentator"> {{k.profile_rakyat[0].fullname}} </p>
+                                <p class="waktu_komentator"> 40 menit yang lalu</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col l9 isi_komentar">
-                            {{k_c.comment}}
+                    <div class="col l9 isi_komentar">
+                        {{k.post}}
+                        <p class="btn-addkomentar"><a tooltipped class="btn-floating red" data-position="top" data-tooltip="Tambah Komentar"><i class="material-icons">add</i></a></p>
+                    </div>
+                </div>
+
+
+                <!-- balas komentar -->
+                <div class="row" ng-if="k.comments" ng-repeat="k_c in k.comments">
+                    <div class="col s11 push-s1">
+                        <div class="row each_box_komentar">
+                            <div class="col l3 data_komentator">
+                                <div class="row">
+                                    <div class="col l3"> <img src="asset/icon/user.png" alt="" /> </div>
+                                    <div class="col l9">
+                                        <p class="nama_komentator"> {{k_c.profile_rakyat.fullname}} </p>
+                                        <p class="waktu_komentator"> 40 menit yang lalu</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col l9 isi_komentar">
+                                {{k_c.comment}}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- end balas komentar -->
             </div>
-            <!-- end balas komentar -->
-
         </div>
 
         <div id="komentar2" class="col s12">Test 2</div>
     </div>
 
+</div>
+<!-- End Modal Balas Komentar -->
+
+
+
+<!-- Modal Komentar Proyek -->
+<div id="modal-komentar-detail" class="modal">
+    <div class="modal-content">
+        <h4>Komentar</h4>
+
+        <div class="row">
+
+            <form class="col s12" ng-submit="submitKomentar()">
+                <div class="row">
+                    <!-- Switch -->
+                    <div class="switch">
+                        <label>
+                            Negatif
+                            <input type="checkbox" name="like_toggle" ng-model="komentar_like_toggle">
+                            <span class="lever"></span>
+                            Positif
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="komentar" class="materialize-textarea" name="komentar" ng-model="komentar_text"></textarea>
+                        <label for="komentar">Textarea</label>
+                    </div>
+                </div>
+
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File (optional)</span>
+                        <input type="file" ng-model="komentar_media">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" ng-model="komentar_media_text">
+                    </div>
+                </div>
+
+                <button class="waves-effect waves-light btn" type="submit">Submit Komentar</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal Komentar -->
+
+<!-- Modal Komentar Proyek positif-->
+<div id="modal-komentar-positif-detail" class="modal">
+    <div class="modal-content">
+        <h4>Komentar</h4>
+
+        <div class="row">
+
+            <form class="col s12" ng-submit="submitKomentarPositif()">
+                <div class="row">
+                    <!-- Switch -->
+                    <div class="switch">
+                        <label>
+                            Negatif
+                            <input disabled type="checkbox" name="like_toggle" id="checkbox_auto_positif" ng-model="komentar_like_toggle">
+                            <span class="lever"></span>
+                            Positif
+                        </label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="komentar" class="materialize-textarea" name="komentar" ng-model="komentar_text"></textarea>
+                        <label for="komentar">Textarea</label>
+                    </div>
+                </div>
+
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File (optional)</span>
+                        <input type="file" ng-model="komentar_media">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" ng-model="komentar_media_text">
+                    </div>
+                </div>
+
+                <button class="waves-effect waves-light btn" type="submit">Submit Komentar</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal Komentar Negatif-->
+
+<!-- Modal Balas Komentar Proyek -->
+<div id="modal-balas-komentar" class="modal">
+    <div class="modal-content">
+        <h4>Balas Komentar</h4>
+
+        <div class="row">
+
+            <form class="col s12" ng-submit="submitKomentar()">
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="komentar" class="materialize-textarea" name="komentar" ng-model="komentar_text"></textarea>
+                        <label for="komentar">Textarea</label>
+                    </div>
+                </div>
+
+                <button class="waves-effect waves-light btn" type="submit">Balas Komentar</button>
+            </form>
+
+        </div>
+    </div>
 </div>
 <!-- End Modal Balas Komentar -->
